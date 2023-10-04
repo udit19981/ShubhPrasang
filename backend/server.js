@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://admin:admin@cluster0.bofkigt.mongodb.net/shubhprasang?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/APPEvent?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -18,14 +18,17 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.bofkigt.mongodb.net/shubhpr
 const User = mongoose.model('User', {
   username: String,
   password: String,
+  email: String,
+  phoneNumber: String,
+  name: String
 });
 
 // Signup Route
 app.post('/signup', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, name, email, phoneNumber} = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = new User({ username, password: hashedPassword });
+  const user = new User({ username, name, email, phoneNumber, password: hashedPassword });
   await user.save();
 
   res.json({ message: 'User registered successfully' });
@@ -33,20 +36,20 @@ app.post('/signup', async (req, res) => {
 
 // Login Route
 app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username });
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
 
   if (!user) {
-    return res.status(401).json({ message: 'Invalid username or password' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
 
   const isValidPassword = await bcrypt.compare(password, user.password);
 
   if (!isValidPassword) {
-    return res.status(401).json({ message: 'Invalid username or password' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
 
-  const token = jwt.sign({ userId: user._id }, 'your-secret-key');
+  const token = jwt.sign({ userId: user._id }, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InNodWJocHJhc2hhbmciLCJpYXQiOjE1MTYyMzkwMjJ9.gMc4xj3EcLj3p57RZQLDGxVMvxGB8W83hXOI76rDLbg');
   res.json({ token });
 });
 
