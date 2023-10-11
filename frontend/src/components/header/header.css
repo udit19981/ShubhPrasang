@@ -1,0 +1,51 @@
+/* Custom CSS for the Navbar */
+.navbar {
+    background-color: #343a40; /* Background color for the Navbar */
+  }
+  
+  .navbar-brand {
+    font-size: 24px; /* Adjust the brand name font size */
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 18px; /* Adjust the navigation link font size */
+    margin-right: 20px; /* Add spacing between navigation links */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff; /* Change the color of navigation links on hover */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff; /* Color of the navbar toggle icon */
+  }
+  
+  .navbar-light .navbar-toggler-icon {
+    background-color: #007bff; /* Color of the toggle icon in light mode */
+  }
+  
+  .navbar-toggler {
+    border-color: #007bff; /* Border color of the toggle button */
+  }
+  
+  .navbar-toggler:hover {
+    background-color: #007bff; /* Background color of the toggle button on hover */
+    border-color: #007bff; /* Border color of the toggle button on hover */
+  }
+  
+  /* Style the Login and Sign Up buttons */
+  .navbar .btn {
+    font-size: 16px;
+  }
+  
+  /* Add custom margin to Login button */
+  .navbar .btn-outline-light {
+    margin-right: 10px;
+  }
+  
+  /* Add custom margin to the Sign Up button */
+  .navbar .btn-primary {
+    margin-right: 0;
+  }
+  

@@ -1,0 +1,64 @@
+/* App.css */
+
+/* Styles for the entire App */
+.App {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Styles for the Header component */
+/* You can adjust these styles based on your design */
+.header {
+  background-color: #343a40; /* Background color for the header */
+  color: #fff; /* Text color for the header */
+  padding: 20px; /* Add padding to the header */
+}
+
+.header a {
+  color: #fff; /* Text color for header links */
+  text-decoration: none; /* Remove underline from header links */
+  font-size: 18px; /* Adjust font size for header links */
+  margin-right: 20px; /* Add spacing between header links */
+}
+
+.header a:hover {
+  color: #007bff; /* Change the color of header links on hover */
+}
+
+/* Styles for the Login and Signup components */
+/* You can adjust these styles based on your design */
+.login-form {
+  max-width: 400px; /* Set a maximum width for the login form */
+  margin: 0 auto; /* Center the login form horizontally */
+  padding: 20px; /* Add padding to the login form */
+  border: 1px solid #ccc; /* Add a border to the login form */
+  border-radius: 5px; /* Add border-radius to round corners */
+  background-color: #fff; /* Background color for the login form */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #0056b3; /* Change the background color on hover */
+}
+
+/* Styles for the Signup component can be similar to the Login component */

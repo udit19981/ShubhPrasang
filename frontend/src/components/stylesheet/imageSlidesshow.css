@@ -1,0 +1,26 @@
+.slideshow-container {
+  position: relative;
+  width: fit-content; /* Set the width to 500px */
+  width: fit-content; /* Set the height to 300px */
+  margin: 0 auto;
+  border: 2px solid #000; /* Add a 1px solid black border */
+  border-radius: 10px; /* Add rounded corners with a radius of 10px */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+  
+  .slide {
+    display: none;
+    width: fit-content;
+    height: fit-content;
+  }
+  
+  img {
+    width: '100px';
+    height: '100px';
+    border-radius: 10px;
+  }
+  
+  .active {
+    display: block;
+  }
+  
