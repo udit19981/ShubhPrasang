@@ -74,6 +74,19 @@ body {
     color: #fff;
 }
 
+.event-card {
+    transition: transform 0.5s ease-in-out;
+}
+
+.event-card.next {
+    transform: translateX(100%);
+}
+
+.event-card.prev {
+    transform: translateX(-100%);
+}
+
+
 @media screen and (max-width: 800px) {
     .event {
         width: 50%;
