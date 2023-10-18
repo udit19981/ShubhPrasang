@@ -1,0 +1,14 @@
+.imgSlider{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+}
+
+.imgContainer{
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}

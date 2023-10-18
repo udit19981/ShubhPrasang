@@ -1,13 +1,13 @@
 // HomePage.js
 import React from 'react';
-import eventImage1 from '../../assets/images/event1.jpeg';
-import eventImage2 from '../../assets/images/event2.jpeg';
-import eventImage3 from '../../assets/images/event3.jpeg';
-import eventImage4 from '../../assets/images/event4.jpeg';
-import eventImage5 from '../../assets/images/event5.jpeg';
+import eventImage1 from '../../assets/images/event1.png';
+import eventImage2 from '../../assets/images/event2.png';
+import eventImage3 from '../../assets/images/event3.png';
+import eventImage4 from '../../assets/images/event4.png';
 import ImageSlideshow from '../ImageSlideshow';
 import EventTagline from '../eventTagLine';
 import SearchBar from '../searchBar';
+import './home.css';
 
 function HomePage() {
   const images = [
@@ -15,7 +15,6 @@ function HomePage() {
     eventImage2,
     eventImage3,
     eventImage4,
-    eventImage5,
   ];
 
   const handleSearch = (searchText) => {
@@ -35,16 +34,20 @@ function HomePage() {
   return (
     <div>
       <header>
-
         <h1>Welcome to </h1>
         <EventTagline />
       </header>
       <hr style={customStyles} /> 
       <SearchBar onSearch={handleSearch} />
       <main>
-      <div className="App">
+      <div >
+
       <h1>Image Slideshow</h1>
+      <div className='imgContainer'>
+      <div className='imgSlider'>
       <ImageSlideshow images={images} />
+      </div>
+      </div>
     </div>
     <div style={sectionContainer}>
         <section>

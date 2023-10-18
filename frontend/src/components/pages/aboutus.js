@@ -1,8 +1,8 @@
 // ShubhPrasangAboutUs.js
 import React from 'react';
 import '../stylesheet/ShubhPrasangAboutUs.css'; // Import your CSS file
-import nikunjImage from '../../assets/images/nikunj.jpg';
-import uditImage from '../../assets/images/Udit.jpg';
+import nikunjImage from '../../assets/images/nikunj.png';
+import uditImage from '../../assets/images/Udit.png';
 import teammember from '../../assets/images/teammember.png';
 
 

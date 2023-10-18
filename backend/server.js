@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/APPEvent?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin@cluster0.bofkigt.mongodb.net/shubhprasang?retryWrites=true&w=majority')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -23,7 +23,28 @@ const User = mongoose.model('User', {
   name: String
 });
 
-// Signup Route
+// Wedding Events Model
+const weddingEvents = mongoose.model('weddingEvents', {
+  brideName: String,
+  groomName: String,
+  eventDate: Date,
+  venue: String,
+  email: String,
+  phoneNumber: String
+})  
+
+// Wedding Events api
+app.post('/wedding', async(req,res) =>{
+  const {  brideName, groomName, eventDate, venue, email, phoneNumber} = req.body;
+
+  const user = new weddingEvents({ brideName, groomName, eventDate, venue, email, phoneNumber });
+  await user.save();
+
+  res.json({ message: 'Wedding Event registered successfully' });
+
+})
+
+// Signup api
 app.post('/signup', async (req, res) => {
   const { username, password, name, email, phoneNumber} = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -34,7 +55,7 @@ app.post('/signup', async (req, res) => {
   res.json({ message: 'User registered successfully' });
 });
 
-// Login Route
+// Login api
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });

@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.min.css';
+// Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const FooterContainer = styled.footer`
   background-color: #333333;
@@ -23,7 +27,6 @@ const SocialMediaLinks = styled.div`
     text-decoration: none;
     color: white;
     margin-right: 20px;
-    transition: color 0.3s;
     font-size: 24px;
   }
   a:hover {
