@@ -1,0 +1,68 @@
+/* Homepage.css */
+
+.homepage {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 100%;
+}
+
+.big-text {
+    font-size: 36px;
+    color: #333;
+    margin: 20px 0;
+}
+
+p {
+    color: #666;
+    font-size: 18px;
+}
+
+.content {
+    text-align: left;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Apply styles to specific sections */
+.section:nth-child(odd) {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.section:nth-child(odd) img {
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .big-text {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
