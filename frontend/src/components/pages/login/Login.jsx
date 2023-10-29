@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './login.css'
+import loginImage from '../../../assets/images/event3.png';
+import './login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -21,9 +23,14 @@ const Login = () => {
     };
 
     return (
+     <div className='loginContainer'>
+        <div>
+            <img className='loginImg' src={loginImage} alt='img'/>
+        </div>
         <div className="login-container">
             <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
+            
+            <form className='loginForm' onSubmit={handleSubmit}>
                 <input
                     className="input-field"
                     type="email"
@@ -42,7 +49,11 @@ const Login = () => {
                 <p>
                     Don't have an account? <a href="/signup">Sign Up</a>
                 </p>
+                <Link to="/AdminLogin">
+                        <button className="login-button1" type="button">isAdmin?</button>
+                </Link>
             </form>
+        </div>
         </div>
     );
 }

@@ -1,100 +1,42 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "montserrat", sans-serif;
+.eventSubContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
 }
 
-.events {
-
-    text-align: center;
-}
-
-.events h1 {
-    display: inline-block;
-    text-transform: uppercase;
-    border-bottom: 4px solid #7848f4;
-    font-size: 20px;
-    padding-bottom: 10px;
-    margin-top: 40px;
-}
-
-.cen {
-    max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-}
-
-.event {
-    display: inline-block;
-    width: calc(100% / 3);
-    margin: 0 -2px;
-    padding: 20px;
-    box-sizing: border-box;
+.eventBtn{
+    width: fit-content;
+    margin-top: 10px;
+    padding: 10;
+    border: none;
+    font: inherit;
+    color: white;
+    background-color: #7848f4;
+    border-radius: 10px;
     cursor: pointer;
-    transition: 0.4s;
+    font-size: larger;
+    font-family: 'Roboto', sans-serif;
 }
 
-.event:hover {
-    background: #ddd;
+.eventBtn:focus{
+    outline: 0;
 }
 
-.event i {
-    color: #3498db;
-    font-size: 34px;
-    margin-bottom: 30px;
+.eventSection{
+    width: max-content;
+    background-color: bisque;
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin:40px
 }
 
-.event h2 {
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin: 0;
-}
-
-.event p {
-    color: gray;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.homebtn {
-    margin-top: 30px;
-    background-color: #3d3d3d;
-    padding: 12px 40px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 25px;
-    letter-spacing: 1.5px;
-
-}
-
-.homebtn:hover {
-    background-color: #a52a2a;
-    color: #fff;
-}
-
-.event-card {
-    transition: transform 0.5s ease-in-out;
-}
-
-.event-card.next {
-    transform: translateX(100%);
-}
-
-.event-card.prev {
-    transform: translateX(-100%);
-}
-
-
-@media screen and (max-width: 800px) {
-    .event {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .event {
-        width: 100%;
-    }
+.imgEvent{
+    width: 100%;
+    height: 100%;
+    /* margin-bottom: 10px; */
 }

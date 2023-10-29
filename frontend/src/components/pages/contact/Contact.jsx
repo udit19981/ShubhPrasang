@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Typography, Container } from '@mui/material';
+import { TextField, Button, Grid, Typography } from '@mui/material';
+import contactImage from '../../../assets/images/event3.png'
+import './contact.css'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +21,11 @@ const ContactForm = () => {
   };
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: '100px' }} >
+   
+    <div className='container' >
+      <div>
+        <img className='img' src={contactImage} alt='img'/>
+      </div>
       <form onSubmit={handleSubmit}>
         <Typography textAlign="center" variant="h4" gutterBottom>
           Contact Us
@@ -72,7 +78,7 @@ const ContactForm = () => {
           Submit
         </Button>
       </form>
-    </Container>
+    </div>
   );
 };
 

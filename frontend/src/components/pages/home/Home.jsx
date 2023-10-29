@@ -1,34 +1,106 @@
-import React from "react";
-import './home.css'
+// HomePage.js
+import React from 'react';
+import eventImage1 from '../../../assets/images/event1.png';
+import eventImage2 from '../../../assets/images/event2.png';
+import eventImage3 from '../../../assets/images/event3.png';
+import eventImage4 from '../../../assets/images/event4.png';
+import ImageSlideshow from '../../ImageSlideshow';
+import EventTagline from '../../eventTagLine';
+import SearchBar from '../../searchBar';
+import PreferredLocationMap from '../../mapContainer';
+import MyCarousel from '../../MyCarousel';
+import './home.css';
 
-const Home = () => {
+function HomePage() {
+  const images = [
+    eventImage1,
+    eventImage2,
+    eventImage3,
+    eventImage4,
+  ];
+
+  const handleSearch = (searchText) => {
+    console.log('Searching for:', searchText);
+  };
+  const customStyles = {
+    color: 'grey',
+    backgroundColor: 'red',
+    height: '2px',
+    border: 'none',
+  };
+  const mapContainer = {
+    
+    height: '20%',
+    width: '100%'
+
+  }
+
+  const sectionContainer ={
+    display:'flex',
+    flexDirection:'row'
+  }
   return (
-    <div className="homepage">
-      <section className="section">
-        <h1 className="big-text">Event Planning is Hard</h1>
-        <p>We can help you</p>
-      </section>
-      <section className="section">
-        <div className="content">
+    <div>
+      <header>
+        <h1>Welcome to </h1>
+        <EventTagline />
+      </header>
+      <hr style={customStyles} /> 
+      <SearchBar onSearch={handleSearch} />
+      <main>
+      <div className='mainContainer'>
+
+      <h1>Image Slideshow</h1>
+      <div className='imgContainer'>
+      <div className='imgSlider'>
+      <ImageSlideshow className='img1' images={images} />
+      </div>
+      </div>
+    </div>
+    <hr style={customStyles} /> 
+    <div>
+      <h1>Browse by EventType
+Preferred Locations</h1>
+      <MyCarousel />
+    </div>
+    <hr style={customStyles} /> 
+    <div>
+      <h1>Popular Halls</h1>
+      <MyCarousel />
+    </div>
+    <hr style={customStyles} /> 
+    <div style={sectionContainer}>
+        <section className='homeSection'>
           <h2>About Us</h2>
           <p>
-            ShubhPrasang is a full-service event management firm based in Ontario that was created by pairing together our passion for business and events. We bring a fresh, unique approach to the event management industry. Our team understands that a properly executed event can be leveraged to support an organization’s strategic vision, incorporated into a company’s marketing plan, or used to build networks and client loyalty.
+          Shubhprasang Events crafts unforgettable experiences. 
+          From corporate gatherings to magical weddings, our expert team ensures seamless, 
+          personalized events that reflect your unique style. Join us in creating lasting memories.
           </p>
-        </div>
-      </section>
-      <section className="section">
-        <h1 className="big-text">Event Planning is our passion</h1>
-      </section>
-      <section className="section">
-        <div className="content">
-          <h2>Our Approach</h2>
+        </section>
+        <section className='homeSection'>
+          <h2>Services</h2>
           <p>
-            ShubhPrasang approaches every project with meticulous attention to detail and obsessive precision. Regardless of size and scope, we treat your event like a business with clear strategic goals, defined milestones, and a comprehensive plan to ensure that your event is delivered on time and on budget. At Spark, we put your organization first. We learn about your business, we focus on your challenges, and we plan events to support your goals.
+          Shubhprasang Events offers a diverse array of services tailored to your requirements. 
+          Our offerings include comprehensive event planning and execution, 
+          ensuring a seamless and unforgettable experience for you and your guests.
           </p>
+        </section>
+        <section className='homeSection'>
+          <h2>Contact Us</h2>
+          <p>
+          For any inquiries or to get in touch, please reach out to us. We look forward to hearing from you.  
+          </p>
+        </section>
         </div>
-      </section>
+        <hr style={customStyles} /> 
+        <h1>Preferred Locations</h1>
+        <div style={mapContainer}>
+        <PreferredLocationMap />
+        </div>
+      </main>
     </div>
-  )
+  );
 }
 
-export default Home;
+export default HomePage;

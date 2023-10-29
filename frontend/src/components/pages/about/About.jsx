@@ -1,35 +1,86 @@
+// ShubhPrasangAboutUs.js
 import React from 'react';
-import { Typography, Container, Box } from '@mui/material';
+import './about.css'; // Import your CSS file
+import nikunjImage from '../../../assets/images/nikunj.png';
+import uditImage from '../../../assets/images/Udit.png';
+import teammember from '../../../assets/images/teammember.png';
 
-const About = () => {
+
+function ShubhPrasangAboutUs() {
+
+  const customStyles = {
+    color: 'red',
+    backgroundColor: 'red',
+    height: '2px',
+    border: 'none',
+  };
+  const aboutSection = {
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    // justifyContent:'space-between'
+  }
+
   return (
-    <Container maxWidth="md">
-      <Box textAlign="center" marginTop={3} marginBottom={3}>
-        <Typography variant="h4">About Us</Typography>
-      </Box>
+    <div className="about-us-container">
 
-      <Typography variant="h6" gutterBottom>
-        Our Belief
-      </Typography>
-      <Typography paragraph>
-        ShubhPrasang is a highly creative event design and management available for weddings and all the events. We are one of the leading event management with a talented team of dedicated event professionals with creativity and innovation. We are also passionate about transforming spaces and creating events that are genuinely unique.
-      </Typography>
+      <section className="about-us-section">
+        <h2>About ShubhPrasang</h2>
+        <div className='para'>
+          ShubhPrasang is your trusted partner in creating unforgettable events. We specialize in event planning and management, making every occasion truly special and memorable.
+        </div>
+        <div>
+          Our mission is to bring your dreams to life, whether it's a wedding, corporate event, or any other special occasion. With our dedicated team of event experts, we take care of every detail, ensuring a seamless and stress-free experience for our clients.
+        </div>
+      </section>
+      <hr style={customStyles} /> 
+    <div style={aboutSection}>
+      <section className="team-section">
+        <h2>Meet Our Team</h2>
+        <div className="team-member">
+          <img src={nikunjImage} alt="Team Member 1" />
+          <h3>Nikunj Patel</h3>
+          <p>Full Stack developer</p>
+        </div>
+        <hr style={customStyles} /> 
+        <div className="team-member">
+          <img src={uditImage} alt="Team Member 2" />
+          <h3>Udit avaiya</h3>
+          <p>Full Stack developer</p>
+        </div>
+        <hr style={customStyles} /> 
+        <div className="team-member">
+          <img src={teammember} alt="Team Member 2" />
+          <h3>Deep Patel</h3>
+          <p>Full Stack developer</p>
+        </div>
+        <hr style={customStyles} /> 
+        <div className="team-member">
+          <img src={teammember} alt="Team Member 2" />
+          <h3>Akash Singh</h3>
+          <p>Full Stack developer</p>
+        </div>
+      </section>
 
-      <Typography variant="h6" gutterBottom>
-        Vision
-      </Typography>
-      <Typography paragraph>
-        We are here to let you enjoy your piece of cake while we walk the extra mile for you and offer a "One stop Shoppe" for all your event management requirements. An Event Organizer in Canada.
-      </Typography>
-
-      <Typography variant="h6" gutterBottom>
-        Mission
-      </Typography>
-      <Typography paragraph>
-        We strive to achieve the very best in quality and elegance for the client. From events which are close to heart like birthday parties to significant events like Marriages, we take a challenge and make sure each and every requirement of the client is met. We have been in all the corners, and with that, we bring to the table what you deserve, the best event management company in Canada.
-      </Typography>
-    </Container>
+      <section className="testimonials-section">
+        <h2>What Our Clients Say</h2>
+        <div className="testimonial">
+          <blockquote>
+            ShubhPrasang made our wedding day absolutely magical. Their attention to detail and creativity exceeded our expectations.
+          </blockquote>
+          <p>- Happy Couple</p>
+        </div>
+        <div className="testimonial">
+          <blockquote>
+            We couldn't have pulled off our corporate event without ShubhPrasang. Their professionalism and expertise were outstanding.
+          </blockquote>
+          <p>- Satisfied Client</p>
+        </div>
+        {/* Add more testimonials as needed */}
+      </section>
+    </div>
+    </div>
   );
-};
+}
 
-export default About;
+export default ShubhPrasangAboutUs;

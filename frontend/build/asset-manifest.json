@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.54506512.css",
+    "main.js": "/static/js/main.b768fc5f.js",
+    "static/js/787.04bab7fe.chunk.js": "/static/js/787.04bab7fe.chunk.js",
+    "static/media/event1.png": "/static/media/event1.cf170abd3936f37926bb.png",
+    "static/media/event3.png": "/static/media/event3.a35d98136ab223673f3d.png",
+    "static/media/event2.png": "/static/media/event2.b1a1fb80d47e45444a04.png",
+    "static/media/event4.png": "/static/media/event4.9a88cfa6f49cbb55d2b4.png",
+    "static/media/Udit.png": "/static/media/Udit.0760c1e2b39ec1d1fa77.png",
+    "static/media/nikunj.png": "/static/media/nikunj.280eea79aad5425c6ed5.png",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.d75e3fd1eb12e9bd6655.ttf",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.016b4a6cdced82ab3aa1.ttf",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.b6879d41b0852f01ed5b.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.878f31251d960bd6266f.woff2",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.50701fbb8177c2dde530.ttf",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.c6a0c95b0a95c4553700.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.1bac2991f3dbfa237aec.woff2",
+    "index.html": "/index.html",
+    "main.54506512.css.map": "/static/css/main.54506512.css.map",
+    "main.b768fc5f.js.map": "/static/js/main.b768fc5f.js.map",
+    "787.04bab7fe.chunk.js.map": "/static/js/787.04bab7fe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54506512.css",
+    "static/js/main.b768fc5f.js"
+  ]
+}

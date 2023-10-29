@@ -1,11 +1,11 @@
 .slideshow-container {
-  position: relative;
+  /* position:absolute; */
   width: fit-content; /* Set the width to 500px */
-  width: fit-content; /* Set the height to 300px */
+  height: fit-content; /* Set the height to 300px */
   margin: 0 auto;
-  border: 2px solid #000; /* Add a 1px solid black border */
-  border-radius: 10px; /* Add rounded corners with a radius of 10px */
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  /* border: 2px solid #000; 
+  border-radius: 10px; 
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); */
 }
   
   .slide {
@@ -15,7 +15,7 @@
   }
   
   img {
-    width: 100%;
+    width: 60%;
     height: 100%;
     border-radius: 10px;
   }

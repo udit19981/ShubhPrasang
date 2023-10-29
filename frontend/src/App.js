@@ -1,17 +1,22 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/login/login';
-import Signup from './components/signup/signup';
-import Header from './components/header/header';
-import AboutUsPage from './components/pages/aboutus';
-import ContactForm from './components/pages/contactus';
-import EventPage from './components/pages/events';
+import Login from './components/pages/login/Login';
+import Signup from './components/pages/signup/Signup';
+import Header from './components/header/Header';
+import ShubhPrasangAboutUs from './components/pages/about/About';
+import ContactForm from './components/pages/contact/Contact';
+import EventPage from './components/pages/events/Events';
 import Wedding from './components/pages/events/wedding';
 import Birthday from './components/pages/events/birthday';
 import Corporate from './components/pages/events/corporate';
-import HomePage from './components/pages/home';
+import HomePage from './components/pages/home/Home';
 import Footer from './components/footer/footer';
+import Venue from './components/admin/Venue';
+import Usermgmt from './components/admin/Usermgmt';
+import Dashboard from './components/admin/Dashboard';
+import OrganizerForm from './components/admin/Organizer';
+import AdminLogin from './components/admin/AdminLogin';
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
@@ -21,21 +26,26 @@ function App() {
   return (
     
     <Router>
-      <Header />
+      <Header className="header"/>
     <div className='App'>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/about" element={<AboutUsPage/>} />
+        <Route path="/about" element={<ShubhPrasangAboutUs/>} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/events" element={<EventPage/>} />
         <Route path="events/wedding" element={<Wedding />} />
         <Route path="events/birthday" element={<Birthday />} />
         <Route path="events/corporate" element={<Corporate />} />
+        <Route path="/Venue" element={<Venue/>}/>
+        <Route path='/Usermgmt' element={<Usermgmt/>}/>
+        <Route path='/Dashboard' element={<Dashboard/>}/>
+        <Route path='/Organizer' element={<OrganizerForm/>}/>
+        <Route path='/AdminLogin' element={<AdminLogin/>}/>
       </Routes>
     </div>
-      <Footer />
+      <Footer className="footer" />
   </Router>
       
   );

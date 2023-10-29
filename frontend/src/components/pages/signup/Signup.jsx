@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SignupImage from '../../../assets/images/event3.png'
 import './signup.css'
 
 const Signup = () => {
@@ -32,9 +33,13 @@ const Signup = () => {
     };
 
     return (
+        <div className='signupContainer'>
+        <div>
+            <img className='signupImg' src={SignupImage} alt='img'/>
+        </div>
         <div className="signup-container">
             <h2>Signup</h2>
-            <form onSubmit={handleSubmit}>
+            <form className='signupForm' onSubmit={handleSubmit}>
                 <input
                     className="input-field"
                     type="text"
@@ -82,6 +87,7 @@ const Signup = () => {
             <p>
                 Already have an account? <a href="/login">Log In</a>
             </p>
+        </div>
         </div>
     );
 };

@@ -1,15 +1,20 @@
 /* Custom CSS for the Navbar */
 .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #343a40; /* Background color for the Navbar */
   }
   
   .navbar-brand {
+    /* position: fixed; */
     font-size: 24px; /* Adjust the brand name font size */
     font-weight: bold;
   }
   
   .navbar-nav .nav-link {
-    font-size: 18px; /* Adjust the navigation link font size */
+    font-size: 18px;
+     /* Adjust the navigation link font size */
     margin-right: 20px; /* Add spacing between navigation links */
   }
   
@@ -49,3 +54,7 @@
     margin-right: 0;
   }
   
+  .headerBtn{
+    display: flex;
+    flex-direction: row;
+  }

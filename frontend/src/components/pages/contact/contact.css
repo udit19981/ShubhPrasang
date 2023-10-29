@@ -1,0 +1,41 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+  }
+  
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .img{
+    width: 50%;
+  }
+
+  .textfield {
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .textfield {
+      width: 100%;
+    }
+  }
+  

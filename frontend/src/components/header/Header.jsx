@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
-  background-color: white;
+  background-color: #333333;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
 `;
@@ -13,14 +13,15 @@ const HeaderContainer = styled.header`
 const Logo = styled.div`
   font-family: 'DM Sans', sans-serif;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 const LogoText = styled.div`
   font-family: system-ui;
   font-weight: bold;
   font-size: 20px;
-  color: black;
+  color: white;
 `;
 
 const LogoHighlight = styled.div`
@@ -40,7 +41,7 @@ const Navigation = styled.nav`
   }
   a {
     text-decoration: none;
-    color: black;
+    color: white;
     transition: color 0.3s;
   }
   a:hover {
@@ -56,6 +57,7 @@ const UserActions = styled.div`
     border-radius: 5px;
     padding: 5px 10px;
     margin-left: 10px;
+   
   }
 `;
 
@@ -80,9 +82,21 @@ const Header = () => {
           <li>
             <NavLink to="/about">About us</NavLink>
           </li>
+          <li>
+            <NavLink to="/Venue">Venue</NavLink>
+          </li>
+          <li>
+            <NavLink to="/Usermgmt">Usermgmt</NavLink>
+          </li>
+          <li>
+            <NavLink to="/Dashboard">Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to="/Organizer">Organizer</NavLink>
+          </li>
         </ul>
       </Navigation>
-      <UserActions>
+      <UserActions className='headerBtn'>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/signup">Sign up</NavLink>
       </UserActions>
