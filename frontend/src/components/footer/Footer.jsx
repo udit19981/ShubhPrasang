@@ -8,6 +8,7 @@ const MainContent = styled.div`
   min-height: calc(100vh - /* height of footer */);
   display: flex;
   flex-direction: column;
+  padding-top:20px /* height of footer */;
 `;
 
 const FooterContainer = styled.footer`
@@ -15,8 +16,6 @@ const FooterContainer = styled.footer`
   color: white;
   padding: 20px;
   width: 100%;
-  position: fixed;
-  bottom: 0;
 `;
 
 const Container = styled.div`

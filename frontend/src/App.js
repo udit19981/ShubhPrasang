@@ -11,7 +11,7 @@ import Wedding from './components/pages/events/wedding';
 import Birthday from './components/pages/events/birthday';
 import Corporate from './components/pages/events/corporate';
 import HomePage from './components/pages/home/Home';
-import Footer from './components/footer/footer';
+import Footer from './components/footer/Footer';
 import Venue from './components/admin/Venue';
 import Usermgmt from './components/admin/Usermgmt';
 import Dashboard from './components/admin/Dashboard';
@@ -45,7 +45,7 @@ function App() {
         <Route path='/AdminLogin' element={<AdminLogin/>}/>
       </Routes>
     </div>
-      <Footer className="footer" />
+    <Footer className="footer" />
   </Router>
       
   );

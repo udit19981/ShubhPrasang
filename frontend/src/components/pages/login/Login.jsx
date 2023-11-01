@@ -1,61 +1,112 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import loginImage from '../../../assets/images/event3.png';
-import './login.css';
-import { Link } from 'react-router-dom';
+import { TextField, Button, Container, Grid, Paper, Typography, CssBaseline } from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 const Login = () => {
-    const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const [errors, setErrors] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('/login', formData);
-            console.log('Token:', response.data.token);
-            console.log("Login Success")
-        } catch (error) {
-            console.error('Login error:', error);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async () => {
+    // Validate fields (you can add your validation logic here)
+    if (formData.username && formData.password) {
+      // Perform login using an API call
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.status === 200) {
+          const responseData = await response.json();
+          if (responseData.token) {
+            // Save the token to local storage or a secure location
+            localStorage.setItem('token', responseData.token);
+
+            // Clear the error message
+            setErrors('');
+
+            // Set the success message
+            setSuccessMessage('Login successful!');
+
+          } else {
+            setErrors('Invalid username or password.');
+          }
+        } else {
+          setErrors('Invalid username or password.');
         }
-    };
+      } catch (error) {
+        console.error('Error:', error);
+        setErrors('Login failed. Please try again.');
+      }
+    } else {
+      setErrors('Required all fields.');
+    }
+  };
 
-    return (
-     <div className='loginContainer'>
-        <div>
-            <img className='loginImg' src={loginImage} alt='img'/>
-        </div>
-        <div className="login-container">
-            <h2>Login</h2>
-            
-            <form className='loginForm' onSubmit={handleSubmit}>
-                <input
-                    className="input-field"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                />
-                <input
-                    className="input-field"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                />
-                <button className="login-button" type="submit">Log In</button>
-                <p>
-                    Don't have an account? <a href="/signup">Sign Up</a>
-                </p>
-                <Link to="/AdminLogin">
-                        <button className="login-button1" type="button">isAdmin?</button>
-                </Link>
-            </form>
-        </div>
-        </div>
-    );
-}
+  return (
+    <Container component="main" sx={{ marginTop: 10 }} maxWidth="xs">
+      <CssBaseline />
+      <Paper elevation={3} sx={{ padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <LockOutlinedIcon sx={{ fontSize: 'large', mb: 1 }} />
+        <Typography component="h1" sx={{ marginBottom: 2 }} variant="h5">
+          Sign in
+        </Typography>
+        <TextField
+          name="username"
+          label="Username"
+          value={formData.username}
+          onChange={handleInputChange}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+        />
+        <TextField
+          name="password"
+          label="Password"
+          type="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+        />
+        <Button
+          onClick={handleSubmit}
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ mt: 2 }}
+        >
+          Sign In
+        </Button>
+        {errors && (
+          <Typography variant="body2" color="error" sx={{ mt: 1 }}>
+            {errors}
+          </Typography>
+        )}
+        {successMessage && (
+          <Typography variant="body2" color="success" sx={{ mt: 1 }}>
+            {successMessage}
+          </Typography>
+        )}
+      </Paper>
+    </Container>
+  );
+};
 
 export default Login;
