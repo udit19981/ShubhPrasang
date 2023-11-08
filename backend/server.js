@@ -2,10 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
+const path = require('path');
+const fs = require('fs');
+
+const multer = require('multer');
+const upload = multer({ dest: 'public/' }); // Set the destination folder for uploaded files
+
 
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use('/images', express.static('public/images'));
+
 
 // MongoDB Connection
 mongoose.connect('mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/shubh?retryWrites=true&w=majority')
@@ -24,6 +32,7 @@ const Venue = mongoose.model('Venue', {
   address: String,
   capacity: Number,
   acceptedPayments: [String],
+  imageUrl: String,
 });
 
 
@@ -103,6 +112,40 @@ app.post('/api/venues', async (req, res) => {
   }
 });
 
+app.post('/api/upload-image', upload.single('image'), (req, res) => {
+  try {
+    if (!req.file) {
+      res.status(400).json({ error: 'No file uploaded' });
+      return;
+    }
+
+    // You can create a unique filename or use other logic to generate a filename here
+    const uniqueFilename = `${Date.now()}-${req.file.originalname}`;
+
+    // Move the uploaded file to a permanent location (e.g., /public/images/)
+    const targetPath = path.join(__dirname, 'public', 'images', uniqueFilename);
+
+    // Move the file from the temporary location to the permanent location
+    fs.renameSync(req.file.path, targetPath);
+
+    // Construct the URL to the uploaded image
+    const imageUrl = `/images/${uniqueFilename}`;
+
+    res.status(200).json({ imageUrl });
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/halls/find/:id', async (req, res)=> {
+    try{
+        const venues=await Venue.findById(req.params.id)
+        res.status(200).json(venues);
+    }catch(err){
+        next(err)
+    }
+  });
 
 // Load Venue Data Route
 app.get('/api/venues', async (req, res) => {

@@ -10,6 +10,7 @@ import SearchBar from '../../searchBar';
 import PreferredLocationMap from '../../mapContainer';
 import MyCarousel from '../../MyCarousel';
 import './home.css';
+import VenueList from '../venue/VenueList';
 
 function HomePage() {
   const images = [
@@ -65,8 +66,8 @@ Preferred Locations</h1>
     </div>
     <hr style={customStyles} /> 
     <div>
-      <h1>Popular Halls</h1>
-      <MyCarousel />
+      <h1>Venues</h1>
+      <VenueList />
     </div>
     <hr style={customStyles} /> 
     <div style={sectionContainer}>

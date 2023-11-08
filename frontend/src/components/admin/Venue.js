@@ -15,9 +15,15 @@ const Venue = () => {
   });
 
   const [venues, setVenues] = useState([]);
+  const [imageFile, setImageFile] = useState(null);
 
   const occasionTypeOptions = ['Wedding', 'Birthday', 'Conference', 'Party'];
   const paymentOptions = ['Credit Card', 'Cash', 'PayPal', 'Bank Transfer'];
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,22 +46,35 @@ const Venue = () => {
       formData.occasionType &&
       formData.venueName &&
       formData.address &&
-      formData.capacity > 0
+      formData.capacity > 0 &&
+      imageFile !== null
     );
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!isFormValid()) {
       alert('Please fill in all required fields before submitting.');
       return;
     }
-
+  
     try {
-      // Send the formData to the server for saving in MongoDB
-      const response = await axios.post('/api/venues', formData);
+      const imageData = new FormData();
+      imageData.append('image', imageFile);
+  
+      // Send the image data to the server for uploading
+      const imageResponse = await axios.post('/api/upload-image', imageData);
+  
+      // Send the venue data to the server for saving in MongoDB, including the image URL
+      const venueData = {
+        ...formData,
+        imageUrl: imageResponse.data.imageUrl,
+      };
+  
+      const response = await axios.post('/api/venues', venueData);
       console.log('Venue data saved:', response.data);
+  
       // Clear the form after submission
       setFormData({
         occasionType: '',
@@ -65,16 +84,19 @@ const Venue = () => {
         capacity: '',
         acceptedPayments: [],
       });
+  
+      setImageFile(null); // Clear the image file
+  
       // Append the new venue to the existing list
       setVenues((prevVenues) => [...prevVenues, response.data]);
-
+  
       // After successfully adding a new venue, load all venues again to include existing entries.
       loadVenues();
     } catch (error) {
       console.error('Error saving Venue data:', error);
     }
   };
-
+  
   const loadVenues = async () => {
     try {
       const response = await axios.get('/api/venues');
@@ -106,8 +128,13 @@ const Venue = () => {
       <h1>Add Venue Information</h1>
       <form onSubmit={handleSubmit}>
         <div>
+          <label>Image:</label>
+    <     input type="file" accept="image/*" onChange={handleImageChange} />
+        </div>
+        
+        <div>
           <label>Occasion Type:</label>
-          <select name="occasionType" class='select-venue' value={formData.occasionType} onChange={handleChange}>
+          <select name="occasionType" className='select-venue' value={formData.occasionType} onChange={handleChange}>
             <option value="">Select an occasion</option>
             {occasionTypeOptions.map((occasion) => (
               <option key={occasion} value={occasion}>

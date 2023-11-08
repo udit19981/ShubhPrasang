@@ -21,6 +21,7 @@ import AdminLogin from './components/admin/AdminLogin';
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import ListFeatured from './components/pages/listfeatured/ListFeatured';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path='/Dashboard' element={<Dashboard/>}/>
         <Route path='/Organizer' element={<OrganizerForm/>}/>
         <Route path='/AdminLogin' element={<AdminLogin/>}/>
+        <Route path="/fhalls/:id" element={<ListFeatured/>} />
       </Routes>
     </div>
     <Footer className="footer" />

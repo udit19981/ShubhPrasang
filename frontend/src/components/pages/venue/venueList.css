@@ -1,0 +1,44 @@
+.fp {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px;
+}
+
+.fpItem {
+    flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease-in-out;
+}
+
+.fpItem:hover {
+    transition: 0.3s ease-in-out;
+    transform: scaleY(1.05);
+
+
+}
+
+.fpImg {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.fpName {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.fpCity {
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+}
+
+.fpPrice {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+}
+
