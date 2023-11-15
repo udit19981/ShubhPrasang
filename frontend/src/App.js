@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect}  from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/pages/login/Login';
 import Signup from './components/pages/signup/Signup';
@@ -22,8 +22,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import ListFeatured from './components/pages/listfeatured/ListFeatured';
+import ProtectedRoute from './components/hooks/ProtectedRoute';
 
 function App() {
+
   const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
@@ -31,14 +33,12 @@ function App() {
     setUserRole(storedUserRole);
   }, []);
 
-
-  return (
-    
+  return (  
     <Router>
-      <Header className="header" userRole={userRole}/>
     <div className='App'>
+      <Header className="header" userRole={userRole}/>
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/about" element={<ShubhPrasangAboutUs/>} />

@@ -2,7 +2,7 @@ import React, {useState, useEffect, lazy, Suspense} from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import "./header.css"
-const NavigationLinks = lazy(() => import('./NavigationLinks'));
+
 import { useNavigate } from "react-router-dom";
 
 const HeaderContainer = styled.header`
@@ -63,6 +63,7 @@ const UserActions = styled.div`
    
   }
 `;
+const NavigationLinks = lazy(() => import('./NavigationLink'));
 
 const Header = ({ userRole }) => {
 
