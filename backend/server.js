@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+const User = require('./models/User')
 
 const multer = require('multer');
 const upload = multer({ dest: 'public/' }); // Set the destination folder for uploaded files
@@ -190,7 +191,6 @@ app.get('/api/venues/count', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 
 const PORT = process.env.PORT || 4500;
 app.listen(PORT, () => {

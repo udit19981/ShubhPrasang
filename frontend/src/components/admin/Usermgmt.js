@@ -31,7 +31,7 @@ const Usermgmt = () => {
   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
   const filteredUsers = currentUsers.filter((user) => {
-    return user.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return user.username.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
   const paginate = (pageNumber) => {
@@ -51,7 +51,6 @@ const Usermgmt = () => {
         <thead>
           <tr>
             <th>Username</th>
-            <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
           </tr>
@@ -60,9 +59,8 @@ const Usermgmt = () => {
           {filteredUsers.map((user) => (
             <tr key={user._id}>
               <td>{user.username}</td>
-              <td>{user.name}</td>
               <td>{user.email}</td>
-              <td>{user.phoneNumber}</td>
+              <td>{user.phone}</td>
             </tr>
           ))}
         </tbody>

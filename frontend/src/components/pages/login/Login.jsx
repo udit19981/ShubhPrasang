@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Grid, Paper, Typography, CssBaseline } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
-
+  
   const [errors, setErrors] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,19 +31,30 @@ const Login = () => {
           },
           body: JSON.stringify(formData),
         });
-
+      
         if (response.status === 200) {
           const responseData = await response.json();
-          if (responseData.token) {
+          console.log('Response Data:', responseData); // Log the responseData
+      
+          if (responseData.token && responseData.user && responseData.user.role) {
             // Save the token to local storage or a secure location
             localStorage.setItem('token', responseData.token);
-
+      
+            // Save the user role to local storage or state
+            localStorage.setItem('userRole', responseData.user.role);
+      
             // Clear the error message
             setErrors('');
-
+      
+            // Redirect based on user role
+            if (responseData.user.role === 'user') {
+              navigate('/'); // Replace with the path for the user's dashboard
+            } else if (responseData.user.role === 'admin') {
+              navigate('/dashboard'); // Replace with the path for the admin dashboard
+            }
+      
             // Set the success message
             setSuccessMessage('Login successful!');
-
           } else {
             setErrors('Invalid username or password.');
           }

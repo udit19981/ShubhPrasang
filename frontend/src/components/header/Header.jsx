@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect, lazy, Suspense} from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import "./header.css"
+const NavigationLinks = lazy(() => import('./NavigationLinks'));
+import { useNavigate } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   background-color: #333333;
@@ -61,44 +64,41 @@ const UserActions = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ userRole }) => {
+
+  const navigate = useNavigate();
+  
+  const handleLogout = () => {
+    // Clear the authentication information from local storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+
+    // Redirect to the logout or home page
+    navigate('/login'); // Replace with the desired path
+  };
+
   return (
     <HeaderContainer>
       <Logo>
         <LogoText>Shubh</LogoText>
         <LogoHighlight>Prasang</LogoHighlight>
       </Logo>
-      <Navigation>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/events">Events</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact">Contact</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About us</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Venue">Venue</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Usermgmt">Usermgmt</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Dashboard">Dashboard</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Organizer">Organizer</NavLink>
-          </li>
-        </ul>
-      </Navigation>
-      <UserActions className='headerBtn'>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup">Sign up</NavLink>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Navigation>
+          <NavigationLinks userRole={userRole} />
+        </Navigation>
+      </Suspense>
+      <UserActions className="headerBtn">
+        {userRole ? (
+          <NavLink to="/login" onClick={handleLogout}>
+            Logout
+          </NavLink>
+        ) : (
+          <>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signup">Sign up</NavLink>
+          </>
+        )}
       </UserActions>
     </HeaderContainer>
   );

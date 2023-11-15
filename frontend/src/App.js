@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/pages/login/Login';
 import Signup from './components/pages/signup/Signup';
@@ -24,10 +24,18 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import ListFeatured from './components/pages/listfeatured/ListFeatured';
 
 function App() {
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const storedUserRole = localStorage.getItem('userRole');
+    setUserRole(storedUserRole);
+  }, []);
+
+
   return (
     
     <Router>
-      <Header className="header"/>
+      <Header className="header" userRole={userRole}/>
     <div className='App'>
       <Routes>
         <Route path="/" element={<HomePage/>} />
