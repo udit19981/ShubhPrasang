@@ -22,7 +22,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import ListFeatured from './components/pages/listfeatured/ListFeatured';
-import ProtectedRoute from './components/hooks/ProtectedRoute';
 
 function App() {
 
@@ -36,7 +35,7 @@ function App() {
   return (  
     <Router>
     <div className='App'>
-      <Header className="header" userRole={userRole}/>
+      <Header userRole={userRole}/>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<Login/>} />

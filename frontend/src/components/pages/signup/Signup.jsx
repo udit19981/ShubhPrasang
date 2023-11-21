@@ -103,7 +103,7 @@ const Signup = () => {
   return (
     <Container component="main" sx={{ marginTop: 4 }} maxWidth="xs">
       <CssBaseline />
-      <Paper elevation={3} sx={{ padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Paper sx={{ padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
