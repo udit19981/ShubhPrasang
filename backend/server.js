@@ -17,7 +17,7 @@ app.use('/images', express.static('public/images'));
 
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/shubh?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://Uavaiya1998:Uavaiya1998@cluster0.0dfoies.mongodb.net/shubhprasang_Up')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
