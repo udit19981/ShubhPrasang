@@ -32,7 +32,7 @@ const NavigationLinks = ({ userRole }) => (
           <NavLink to="/Dashboard">Dashboard</NavLink>
         </li>
         <li>
-          <NavLink to="/Organizer">Organizer</NavLink>
+          <NavLink to="/Organizers">Organizer</NavLink>
         </li>
       </>
     )}

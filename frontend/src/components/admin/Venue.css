@@ -1,120 +1,103 @@
 /* Venue.css */
 .venue-container {
-  max-width: 1372px;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 80px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column; 
-  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-  
-  .venue-container h1 {
-    font-size: 36px;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .venue-container label {
-    font-size: 18px;
-    width: 30%; /* Set the same width as the input elements */
-    display: inline-block; /* Ensure proper alignment */
-    text-align: right; /* Align labels to the right */
-    margin-right: 10px; /* Add some space between label and input */
-  }
-  
-  .venue-container select,
-  .venue-container input[type="text"],
-  .venue-container input[type="number"],
-  .venue-container textarea {
-    width: 30%; /* Adjust width as needed */
-    padding: 20px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  
-  .venue-container select[multiple] {
-    height: 130px;
-  }
-  
-  .venue-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #5e9de1;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  .venue-button:hover {
-    background-color: #4f95e1;
-  }
-  
-.select-venue{
-  height: 50px;
+
+.venue-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.venue-container label {
+  font-size: 16px;
   width: 100%;
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
 }
 
-
-
-.venue-table th:nth-child(odd),
-.venue-table td:nth-child(odd) {
-  background-color: #f2f2f2; 
+.venue-container select,
+.venue-container input[type="text"],
+.venue-container input[type="number"],
+.venue-container input[type="file"],
+.venue-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.venue-table th:nth-child(even),
-.venue-table td:nth-child(even) {
-  background-color: #fff; 
-
-}
-.venue-table tr:nth-child(odd) {
-  background-color: #f9f9f9;
+.venue-container select[multiple] {
+  height: auto;
 }
 
-.venue-table tr:nth-child(even) {
-  background-color: #fff; 
+.venue-button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 24px;
+  background-color: #5e9de1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.venue-button:hover {
+  background-color: #4f95e1;
+}
+
+.select-venue {
+  height: 50px;
+}
+
+.venue-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.venue-table th,
+.venue-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
 .venue-table th {
-  font-weight: bold;
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
+  background-color: #5e9de1;
+  color: #fff;
 }
 
-.venue-table td {
-  padding: 8px;
-  border: 1px solid #ddd;
+.venue-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 .venue-table tr:hover {
   background-color: #f5f5f5;
 }
 
-
 .icon-button {
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #007bff; 
-  margin-right: 20px;
+  color: #007bff;
+  margin-right: 10px;
 }
 
-#delete-button{
+#delete-button {
   color: red;
 }
 
 .icon-button:hover {
-  color: #0056b3; 
+  color: #0056b3;
 }
-

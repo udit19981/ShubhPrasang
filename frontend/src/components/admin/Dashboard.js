@@ -25,7 +25,7 @@ const Dashboard = () => {
         console.error('Error fetching venue count:', error);
       });
 
-      axios.get('/api/venues/count')
+      axios.get('/api/organizer/count')
       .then(response => {
         setOrganizerCount(response.data.count);
       })

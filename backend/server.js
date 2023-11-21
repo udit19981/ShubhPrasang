@@ -160,6 +160,43 @@ app.get('/api/venues', async (req, res) => {
   }
 });
 
+app.delete('/api/venues/:id', async (req, res) => {
+  const venueId = req.params.id;
+
+  try {
+    // Use mongoose to find and remove the venue by ID
+    const deletedVenue = await Venue.findByIdAndRemove(venueId);
+
+    if (!deletedVenue) {
+      return res.status(404).json({ message: 'Venue not found' });
+    }
+
+    res.json({ message: 'Venue deleted successfully', deletedVenue });
+  } catch (error) {
+    console.error('Error deleting venue:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+app.put('/api/venues/:id', async (req, res) => {
+  const venueId = req.params.id;
+  const updatedVenueData = req.body;
+
+  try {
+    const updatedVenue = await Venue.findByIdAndUpdate(venueId, updatedVenueData, { new: true });
+
+    if (!updatedVenue) {
+      return res.status(404).json({ message: 'Venue not found' });
+    }
+
+    res.json({ message: 'Venue updated successfully', updatedVenue });
+  } catch (error) {
+    console.error('Error updating venue:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 app.get('/api/users', async (req, res) => {
   try {
     const users = await User.find(); 
@@ -188,6 +225,112 @@ app.get('/api/venues/count', async (req, res) => {
     res.json({ count: venueCount });
   } catch (error) {
     console.error('Error counting venues:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Count venues API endpoint
+app.get('/api/organizer/count', async (req, res) => {
+  try {
+    const organizerCount = await Organizer.countDocuments();
+    res.json({ count: organizerCount });
+  } catch (error) {
+    console.error('Error counting Organizer:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// Add Venue data to the Database
+app.post('/api/organizers', async (req, res) => {
+  try {
+    const {
+      name,
+      description,
+      category,
+      address,
+      email,
+      contactNumber,
+      website
+    } = req.body;
+
+    // Create a new Organizer instance
+    const newOrganizer = new Organizer({
+      name,
+      description,
+      category,
+      address,
+      email,
+      contactNumber,
+      website
+    });
+
+    // Save the organizer data
+    await newOrganizer.save();
+
+    // Respond with the saved organizer data
+    res.status(201).json(newOrganizer);
+  } catch (error) {
+    console.error('Error saving Organizer:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// Fetch Organizers API endpoint
+app.get('/api/organizers', async (req, res) => {
+  try {
+    const organizers = await Organizer.find();
+    res.json(organizers);
+  } catch (error) {
+    console.error('Error fetching organizers:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+const Organizer = mongoose.model('Organizer', {
+  name: String,
+  description: String,
+  category: String,
+  address: String,
+  email: String,
+  contactNumber: String,
+  website: String,
+});
+
+// Fetch Organizers API endpoint
+app.get('/api/organizers', async (req, res) => {
+  try {
+    const organizers = await Organizer.find();
+    res.json(organizers);
+  } catch (error) {
+    console.error('Error fetching organizers:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+app.delete('/api/organizers/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Organizer.findByIdAndRemove(id);
+    res.json({ message: 'Organizer removed successfully' });
+  } catch (error) {
+    console.error('Error removing organizer:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.put('/api/organizers/:id', async (req, res) => {
+  const { id } = req.params;
+  const updatedOrganizer = req.body;
+
+  try {
+    const organizer = await Organizer.findByIdAndUpdate(id, updatedOrganizer, { new: true });
+    res.json(organizer);
+  } catch (error) {
+    console.error('Error updating organizer:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

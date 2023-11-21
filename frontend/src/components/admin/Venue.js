@@ -16,6 +16,8 @@ const Venue = () => {
 
   const [venues, setVenues] = useState([]);
   const [imageFile, setImageFile] = useState(null);
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [updateVenueId, setUpdateVenueId] = useState(null);
 
   const occasionTypeOptions = ['Wedding', 'Birthday', 'Conference', 'Party'];
   const paymentOptions = ['Credit Card', 'Cash', 'PayPal', 'Bank Transfer'];
@@ -33,7 +35,7 @@ const Venue = () => {
     });
   };
 
-  const handlePaymentChange = (e) => {
+const handlePaymentChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
     setFormData({
       ...formData,
@@ -72,8 +74,19 @@ const Venue = () => {
         imageUrl: imageResponse.data.imageUrl,
       };
   
-      const response = await axios.post('/api/venues', venueData);
-      console.log('Venue data saved:', response.data);
+      if (isUpdateMode) {
+        // If in update mode, send a PUT request to update the venue
+        const response = await axios.put(`/api/venues/${updateVenueId}`, venueData);
+        console.log('Venue updated:', response.data);
+
+        // Reset update mode after successful update
+        setIsUpdateMode(false);
+        setUpdateVenueId(null);
+      } else {
+        // If not in update mode, send a POST request to add a new venue
+        const response = await axios.post('/api/venues', venueData);
+        console.log('Venue data saved:', response.data);
+      }
   
       // Clear the form after submission
       setFormData({
@@ -87,13 +100,10 @@ const Venue = () => {
   
       setImageFile(null); // Clear the image file
   
-      // Append the new venue to the existing list
-      setVenues((prevVenues) => [...prevVenues, response.data]);
-  
       // After successfully adding a new venue, load all venues again to include existing entries.
       loadVenues();
     } catch (error) {
-      console.error('Error saving Venue data:', error);
+      console.error('Error saving/updating Venue data:', error);
     }
   };
   
@@ -112,25 +122,41 @@ const Venue = () => {
     loadVenues();
   }, []);
 
-  // Added a function to update the venue data. Currently, it is under maintainance. 
   const handleUpdateClick = async (venue) => {
-    
+    setFormData({
+      occasionType: venue.occasionType,
+      venueName: venue.venueName,
+      description: venue.description || '',
+      address: venue.address,
+      capacity: venue.capacity,
+      acceptedPayments: venue.acceptedPayments || [],
+    });
+  
+    setIsUpdateMode(true);
+    setUpdateVenueId(venue._id);
   };
 
-  // Added a function to Delete the venue data. Currently, it is under maintainance. 
+ 
+const handleDeleteClick = async (venue) => {
+  if (window.confirm(`Are you sure you want to delete ${venue.venueName}?`)) {
+    try {
+      const response = await axios.delete(`/api/venues/${venue._id}`);
+      console.log('Venue deleted:', response.data);
 
-  const handleDeleteClick = async (venue) => {
-    
-  };
+      // Update the venues list after successful deletion
+      setVenues((prevVenues) => prevVenues.filter((v) => v._id !== venue._id));
+    } catch (error) {
+      console.error('Error deleting Venue data:', error);
+    }
+  }
+};
+
+
 
     return (
       <div className="venue-container">
-      <h1>Add Venue Information</h1>
+      <h1>{isUpdateMode ? 'Update Venue Information' : 'Add Venue Information'}</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Image:</label>
-    <     input type="file" accept="image/*" onChange={handleImageChange} />
-        </div>
         
         <div>
           <label>Occasion Type:</label>
@@ -174,8 +200,12 @@ const Venue = () => {
             ))}
           </select>
         </div>
+        <div>
+          <label>Image:</label>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+        </div>
         <button className="venue-button" type="submit">
-          Add Venue
+          {isUpdateMode ? 'Update Venue' : 'Add Venue'}
         </button>
       </form>
   
