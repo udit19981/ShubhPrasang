@@ -17,12 +17,7 @@ import Usermgmt from './components/admin/Usermgmt';
 import Dashboard from './components/admin/Dashboard';
 import OrganizerForm from './components/admin/Organizer';
 import AdminLogin from './components/admin/AdminLogin';
-// Bootstrap CSS
-import "bootstrap/dist/css/bootstrap.min.css";
-// Bootstrap Bundle JS
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import ListFeatured from './components/pages/listfeatured/ListFeatured';
-// import ProtectedRoute from './components/hooks/ProtectedRoute';
 import CheckoutPage from './components/pages/checkout/CheckoutPage';
 import VenuePage from './components/pages/venuePage/VenuePage'
 

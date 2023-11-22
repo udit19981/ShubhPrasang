@@ -9,15 +9,24 @@
 .homeSection {
     margin: 20px;
     padding: 20px;
-    border: 1px solid #818080;
-    background-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.146);
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px;
 }
 
-/* img {
-    width: 60%;
-} */
+.homeSection h2 {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.homeSection p {
+    font-size: 0.8rem;
+    color: #666;
+}
 
 .big-text {
     font-size: 36px;
@@ -30,13 +39,12 @@ p {
     font-size: 18px;
 }
 
-.content {
-    text-align: left;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.event {
+    margin-top: 3.5rem;
+}
+
+.venue{
+    margin-top: 3.5rem;
 }
 
 h2 {
@@ -44,6 +52,31 @@ h2 {
     color: #333;
     margin-bottom: 10px;
 }
+
+/* Default styles for larger screens */
+.sectionContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3.5rem;
+  }
+  
+  .homeSection {
+    width: 30%;
+  }
+  
+  /* Styles for smaller screens (e.g., mobile devices) */
+  @media (max-width: 768px) {
+    .sectionContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .homeSection {
+      width: 80%; /* Adjust the width as needed for your design */
+      margin-bottom: 20px; /* Add some spacing between sections */
+    }
+  }
+  
 
 /* .section:nth-child(odd) {
     background-color: #f2f2f2;

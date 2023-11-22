@@ -1,44 +1,64 @@
 .fp {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     gap: 20px;
     padding: 10px;
+    flex-wrap: nowrap;
+    /* Disable wrapping to ensure horizontal layout */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
 }
 
 .fpItem {
     flex: 1;
     gap: 10px;
     display: flex;
-    flex-direction: column;
     transition: 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+    width: 300px;
+    /* Set a fixed width for each item */
+    margin: 10px;
+    /* Add margin for spacing */
 }
 
 .fpItem:hover {
     transition: 0.3s ease-in-out;
-    transform: scaleY(1.05);
-
-
+    transform: scale(1.05);
 }
 
 .fpImg {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    border-radius: 0px;
 }
 
 .fpName {
-    color: rgb(0, 0, 0);
     font-weight: bold;
 }
 
-.fpCity {
-    color: rgb(0, 0, 0);
-    font-weight: 300;
-}
-
+.fpName,
+.fpCity,
 .fpPrice {
     color: rgb(0, 0, 0);
-    font-weight: 500;
+    padding: 4px;
 }
 
+@media (max-width: 768px) {
+    .fp {
+        overflow-x: auto;
+        /* Enable horizontal scrolling for mobile screens */
+        flex-wrap: nowrap;
+        /* Disable wrapping for small screens */
+    }
+
+    .fpItem {
+        width: auto;
+        /* Allow items to take their natural width */
+        flex: 0 0 auto;
+        /* Disable flex-grow for individual items */
+    }
+}

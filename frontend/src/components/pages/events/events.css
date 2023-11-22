@@ -1,42 +1,31 @@
-.eventSubContainer{
+/* events.css */
+.event-page-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.event-card {
+    flex: 1;
+    gap: 10px;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    margin-bottom: 20px;
-}
-
-.eventBtn{
-    width: fit-content;
-    margin-top: 10px;
-    padding: 10;
-    border: none;
-    font: inherit;
-    color: white;
-    background-color: #7848f4;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: larger;
-    font-family: 'Roboto', sans-serif;
-}
-
-.eventBtn:focus{
-    outline: 0;
-}
-
-.eventSection{
-    width: max-content;
-    background-color: bisque;
-    display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    margin:40px
+    transition: 0.3s ease-in-out;
 }
 
-.imgEvent{
+.event-card:hover {
+    transition: 0.3s ease-in-out;
+    transform: scaleY(1.05);
+}
+
+.imgEvent {
     width: 100%;
-    height: 100%;
-    /* margin-bottom: 10px; */
+    height: auto;
+    border-radius: 0;
+    /* Remove the border-radius */
+}
+
+.eventBtn {
+    margin-top: 10px;
+    width: 100%;
+    transition: 0.3s ease-in-out;
 }

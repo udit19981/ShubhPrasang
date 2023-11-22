@@ -1,33 +1,28 @@
 .slideshow-container {
-  /* position:absolute; */
-  width: fit-content; /* Set the width to 500px */
-  height: fit-content; /* Set the height to 300px */
+  max-width: 100%; /* Set a maximum width */
+  max-height: 500px; /* Set a maximum height */
   margin: 0 auto;
-  /* border: 2px solid #000; 
-  border-radius: 10px; 
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); */
+  overflow: hidden; /* Hide content that overflows the container */
 }
-  
-  .slide {
-    display: none;
-    width: fit-content;
-    height: fit-content;
-  }
-  
-  img {
-    width: 60%;
-    height: 100%;
-    border-radius: 10px;
-  }
-  
-  .imgSlider{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    
-  }
-  
-  .active {
-    display: block;
-  }
-  
+
+.slide {
+  display: none;
+  width: fit-content;
+  height: fit-content;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imgSlider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.active {
+  display: block;
+}

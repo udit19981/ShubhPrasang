@@ -93,7 +93,7 @@ export const Navbar = (userRole) => {
                     {index === 2 }
                     {index === 0 }
                     {index === 3 }
-                    {index === 4}
+                    {index === 4 }
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
@@ -111,7 +111,7 @@ export const Navbar = (userRole) => {
         fontWeight: "bold",
         cursor: "pointer",
         "&:hover": {
-            color: "#fff",
+            color: "#E61F22",
         },
     }));
 
@@ -138,7 +138,7 @@ export const Navbar = (userRole) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: theme.spacing(5),
+        padding: theme.spacing(3),
         [theme.breakpoints.down("md")]: {
             padding: theme.spacing(2),
         },

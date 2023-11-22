@@ -3,10 +3,14 @@ import useFetch from "../../hooks/useFetch";
 import { useLocation} from "react-router-dom";
 import GroupsIcon from '@mui/icons-material/Groups';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useNavigate } from "react-router-dom";
 
 
 const ListFeatured = () => {
 
+    const navigate = useNavigate(); 
+    const path = '/CheckoutPage'; 
+   
     const location = useLocation();
     const id = location.pathname.split("/")[2];
     
@@ -29,7 +33,7 @@ const ListFeatured = () => {
                     <div className="hallDetailsPrice">
                     <h1>Description</h1>
                     <span>{data.description}</span>
-                    <button>Book Now!</button>
+                    <button onClick={() =>  navigate(path)}>Book Now!</button>
                     </div>
                 </div>
                 </div>

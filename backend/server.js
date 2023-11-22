@@ -17,9 +17,7 @@ app.use('/images', express.static('public/images'));
 
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://admin:admin@cluster0.bofkigt.mongodb.net/CapstoneProject')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect("mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/shubh?retryWrites=true&w=majority");
 
 // Use the auth routes
 const authRoutes = require('./routes/auth');

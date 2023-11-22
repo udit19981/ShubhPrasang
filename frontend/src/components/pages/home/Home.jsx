@@ -5,12 +5,10 @@ import eventImage2 from '../../../assets/images/event2.png';
 import eventImage3 from '../../../assets/images/event3.png';
 import eventImage4 from '../../../assets/images/event4.png';
 import ImageSlideshow from '../../ImageSlideshow';
-import EventTagline from '../../eventTagLine';
-import SearchBar from '../../searchBar';
-import PreferredLocationMap from '../../mapContainer';
-import MyCarousel from '../../MyCarousel';
 import './home.css';
+import EventPage from '../events/Events';
 import VenueList from '../venue/VenueList';
+
 
 function HomePage() {
   const images = [
@@ -20,57 +18,26 @@ function HomePage() {
     eventImage4,
   ];
 
-  const handleSearch = (searchText) => {
-    console.log('Searching for:', searchText);
-  };
-  const customStyles = {
-    color: 'grey',
-    backgroundColor: 'red',
-    height: '2px',
-    border: 'none',
-  };
-  const mapContainer = {
-    
-    height: '20%',
-    width: '100%'
-
-  }
-
-  const sectionContainer ={
-    display:'flex',
-    flexDirection:'row'
-  }
   return (
-    <div>
-      <header>
-        <h1>Welcome to </h1>
-        <EventTagline />
-      </header>
-      <hr style={customStyles} /> 
-      <SearchBar onSearch={handleSearch} />
+    <div className='content'>
       <main>
       <div className='mainContainer'>
-
-      <h1>Image Slideshow</h1>
       <div className='imgContainer'>
       <div className='imgSlider'>
       <ImageSlideshow className='img1' images={images} />
       </div>
       </div>
     </div>
-    <hr style={customStyles} /> 
-    <div>
-      <h1>Browse by EventType
-Preferred Locations</h1>
-      <MyCarousel />
+
+    <div className='event'>
+      <EventPage/>
     </div>
-    <hr style={customStyles} /> 
-    <div>
+    <div className='venue'>
       <h1>Venues</h1>
       <VenueList />
     </div>
-    <hr style={customStyles} /> 
-    <div style={sectionContainer}>
+    
+    <div className='sectionContainer'>
         <section className='homeSection'>
           <h2>About Us</h2>
           <p>
@@ -93,11 +60,6 @@ Preferred Locations</h1>
           For any inquiries or to get in touch, please reach out to us. We look forward to hearing from you.  
           </p>
         </section>
-        </div>
-        <hr style={customStyles} /> 
-        <h1>Preferred Locations</h1>
-        <div style={mapContainer}>
-        <PreferredLocationMap />
         </div>
       </main>
     </div>
