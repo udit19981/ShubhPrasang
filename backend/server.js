@@ -17,7 +17,7 @@ app.use('/images', express.static('public/images'));
 
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://Uavaiya1998:Uavaiya1998@cluster0.0dfoies.mongodb.net/shubhprasang_Up')
+mongoose.connect('mongodb+srv://admin:admin@cluster0.bofkigt.mongodb.net/CapstoneProject')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -339,5 +339,74 @@ const PORT = process.env.PORT || 4500;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+// Paypal Checkout Code starts here
+// let collection;
+
+// client.connect().then(() => {
+//   collection = client.db('CapstoneProject').collection('paypal_orders');
+//   console.log('Connected to MongoDB');
+// });
+
+// paypal.configure({
+//   mode: 'sandbox', // Change to 'live' for production
+//   client_id: 'AarqROJkVgFGPqDblWe0Ct1c6rLCaADk-8Jypc5SGPcov3AMwqDOZMlvOKLngaGOCS_E_vJ2_9wn6FM_',
+//   client_secret: 'ECTgnsWEvw3dU0uO47tZq3l0TXk8S4IXFat7sOqLpDu7PQc9pKqtq-ezViGcc7zNSLj61oez7IaaHRNs',
+// });
+// app.use(
+//   '/pay',
+//   createProxyMiddleware({
+//     target: 'http://localhost:4500', // Replace with your Node.js server URL
+//     changeOrigin: true,
+//   })
+// );
+// app.post('/pay', (req, res) => {
+//   const { price, productName } = req.body;
+
+//   const create_payment_json = {
+//     intent: 'sale',
+//     payer: {
+//       payment_method: 'paypal',
+//     },
+//     redirect_urls: {
+//       return_url: 'http://localhost:4500/success',
+//       cancel_url: 'http://localhost:4500/cancel',
+//     },
+//     transactions: [
+//       {
+//         item_list: {
+//           items: [
+//             {
+//               name: productName,
+//               sku: '001',
+//               price: price,
+//               currency: 'CAD',
+//               quantity: 1,
+//             },
+//           ],
+//         },
+//         amount: {
+//           currency: 'CAD',
+//           total: price,
+//         },
+//         description: 'This is the payment description.',
+//       },
+//     ],
+//   };
+
+//   paypal.payment.create(create_payment_json, function (error, payment) {
+//     if (error) {
+//       throw error;
+//     } else {
+//       for (let i = 0; i < payment.links.length; i++) {
+//         if (payment.links[i].rel === '/') {
+//           collection.insertOne({ paymentId: payment.id, status: 'created' });
+//           res.send(payment.links[i].href);
+//         }
+//       }
+//     }
+//   });
+// });
 
 

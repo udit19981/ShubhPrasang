@@ -16,7 +16,7 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [setIsRegistered] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

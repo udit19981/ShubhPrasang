@@ -22,7 +22,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import ListFeatured from './components/pages/listfeatured/ListFeatured';
-import ProtectedRoute from './components/hooks/ProtectedRoute';
+// import ProtectedRoute from './components/hooks/ProtectedRoute';
+import CheckoutPage from './components/pages/checkout/CheckoutPage';
+import VenuePage from './components/pages/venuePage/VenuePage'
 
 function App() {
 
@@ -35,8 +37,11 @@ function App() {
 
   return (  
     <Router>
+    
     <div className='App'>
+      
       <Header className="header" userRole={userRole}/>
+
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<Login/>} />
@@ -53,6 +58,9 @@ function App() {
         <Route path='/Organizers' element={<OrganizerForm/>}/>
         <Route path='/AdminLogin' element={<AdminLogin/>}/>
         <Route path="/fhalls/:id" element={<ListFeatured/>} />
+        <Route path='/CheckoutPage' element={<CheckoutPage/>}  />
+        <Route path='/VenuePage' element={<VenuePage />}  />
+        
       </Routes>
     </div>
     <Footer className="footer" />

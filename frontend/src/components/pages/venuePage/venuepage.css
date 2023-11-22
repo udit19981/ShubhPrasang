@@ -1,0 +1,57 @@
+.venue-container1 {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .venue-table1 {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px;
+    border-radius: 5px;
+  }
+  
+  .venue-table1 th,
+  .venue-table1 td {
+    border: 3px solid #ddd;
+    border-radius: 5%;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .venue-table1 th {
+    background-color: #f2f2f2;
+  }
+  
+  .venue-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon-button:hover {
+    color: #4caf50;
+  }
+  
+  .select-venue {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #delete-button {
+    color: red;
+  }
+  
