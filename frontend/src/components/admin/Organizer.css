@@ -75,6 +75,7 @@ background-color: #fff;
 }
 
 .organizer-table th {
+color: black;
 font-weight: bold;
 padding: 8px;
 text-align: left;
@@ -106,17 +107,6 @@ background-color: red;
 @media only screen and (max-width: 600px) {
   .organizer-table {
     font-size: 12px;
-  }
-
-  input,
-  textarea,
-  select {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  button {
-    width: 100%;
   }
 }
 

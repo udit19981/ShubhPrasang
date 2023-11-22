@@ -17,7 +17,7 @@ app.use('/images', express.static('public/images'));
 
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://admin:admin@cluster0.xy8yjbh.mongodb.net/shubh?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://Uavaiya1998:Uavaiya1998@cluster0.0dfoies.mongodb.net/shubhprasang_Up");
 
 // Use the auth routes
 const authRoutes = require('./routes/auth');
