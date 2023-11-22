@@ -84,7 +84,7 @@ export const Navbar = (userRole) => {
       ) : (
         // User links
         <List>
-          {["Home", "Events", "Contact", "About"].map(
+          {["Home", "Events", "VenuePage", "Contact", "About"].map(
             (text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton >
@@ -93,6 +93,7 @@ export const Navbar = (userRole) => {
                     {index === 2 }
                     {index === 0 }
                     {index === 3 }
+                    {index === 4}
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
@@ -177,6 +178,9 @@ export const Navbar = (userRole) => {
     const handleEventsClick = () => {
         navigate("/events")
     }
+    const handleVenuePageClick = () => {
+        navigate("/VenuePage")
+    }
     const handleContactClick = () => {
         navigate("/contact")
     }
@@ -221,6 +225,7 @@ export const Navbar = (userRole) => {
                             <>
                                 <NavLink variant="body2" onClick={handleHomeClick}>Home</NavLink>
                                 <NavLink variant="body2" onClick={handleEventsClick}>Events</NavLink>
+                                <NavLink variant="body2" onClick={handleVenuePageClick}>Venue</NavLink>
                                 <NavLink variant="body2" onClick={handleContactClick}>Contact</NavLink>
                                 <NavLink variant="body2" onClick={handleAboutClick}>About</NavLink>
                             </>
@@ -231,6 +236,7 @@ export const Navbar = (userRole) => {
                     <NavbarLinksBox>
                         <NavLink variant="body2" onClick={handleHomeClick}>Home</NavLink>
                         <NavLink variant="body2" onClick={handleEventsClick}>Events</NavLink>
+                        <NavLink variant="body2" onClick={handleVenuePageClick}>Venue</NavLink>
                         <NavLink variant="body2" onClick={handleContactClick}>Contact</NavLink>
                         <NavLink variant="body2" onClick={handleAboutClick}>About</NavLink>
                     </NavbarLinksBox>
