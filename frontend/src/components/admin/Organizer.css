@@ -101,3 +101,27 @@ background-color: green;
 .remove1{
 background-color: red;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .organizer-table {
+    font-size: 12px;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .organizer-table {
+    font-size: 14px;
+  }
+}

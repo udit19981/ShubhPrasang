@@ -101,3 +101,92 @@
 .icon-button:hover {
   color: #0056b3;
 }
+
+/* Venue.css */
+
+/* ... (previous styles) */
+
+/* Responsive Media Queries */
+
+@media only screen and (max-width: 600px) {
+  .venue-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .venue-container h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .venue-container select,
+  .venue-container input[type="text"],
+  .venue-container input[type="number"],
+  .venue-container input[type="file"],
+  .venue-container textarea {
+    font-size: 14px;
+  }
+
+  .venue-button {
+    font-size: 16px;
+  }
+
+  .venue-table th,
+  .venue-table td {
+    font-size: 14px;
+    padding: 8px; 
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .venue-container {
+    max-width: 90%;
+  }
+
+  .venue-table {
+    font-size: 14px;
+  }
+}
+
+
+
+@media only screen and (max-width: 414px) {
+  
+  .venue-container {
+    padding: 10px;
+  }
+
+  .venue-container h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .venue-container select,
+  .venue-container input[type="text"],
+  .venue-container input[type="number"],
+  .venue-container input[type="file"],
+  .venue-container textarea {
+    font-size: 14px;
+  }
+
+  .venue-button {
+    font-size: 16px;
+  }
+
+  .venue-table th,
+  .venue-table td {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.venue-container {
+  flex: 1;
+}
