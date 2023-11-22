@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Paper, Typography, CssBaseline } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { TextField, Button, Container, Grid, Paper, Typography, CssBaseline } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+
 
 const Login = () => {
+  const theme = createTheme();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
-  
+
   const [errors, setErrors] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  
+
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -31,28 +35,28 @@ const Login = () => {
           },
           body: JSON.stringify(formData),
         });
-      
+
         if (response.status === 200) {
           const responseData = await response.json();
           console.log('Response Data:', responseData); // Log the responseData
-      
+
           if (responseData.token && responseData.user && responseData.user.role) {
             // Save the token to local storage or a secure location
             localStorage.setItem('token', responseData.token);
-      
+
             // Save the user role to local storage or state
             localStorage.setItem('userRole', responseData.user.role);
-      
+
             // Clear the error message
             setErrors('');
-      
+
             // Redirect based on user role
             if (responseData.user.role === 'user') {
               navigate('/'); // Replace with the path for the user's dashboard
             } else if (responseData.user.role === 'admin') {
               navigate('/dashboard'); // Replace with the path for the admin dashboard
             }
-      
+
             // Set the success message
             setSuccessMessage('Login successful!');
           } else {
@@ -71,55 +75,83 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" sx={{ marginTop: 10 }} maxWidth="xs">
-      <CssBaseline />
-      <Paper elevation={3} sx={{ padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <LockOutlinedIcon sx={{ fontSize: 'large', mb: 1 }} />
-        <Typography component="h1" sx={{ marginBottom: 2 }} variant="h5">
-          Sign in
-        </Typography>
-        <TextField
-          name="username"
-          label="Username"
-          value={formData.username}
-          onChange={handleInputChange}
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-        />
-        <TextField
-          name="password"
-          label="Password"
-          type="password"
-          value={formData.password}
-          onChange={handleInputChange}
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-        />
-        <Button
-          onClick={handleSubmit}
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ mt: 2 }}
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          Sign In
-        </Button>
-        {errors && (
-          <Typography variant="body2" color="error" sx={{ mt: 1 }}>
-            {errors}
+          {/* <Box
+                        component="img"
+                        sx={{ height: 40, display: { xs: 'none', md: 'flex' }, mr: 1 }}
+                        alt="Logo"
+                        src={logo}
+                    /> */}
+          {/* <img src="logo-nobg.svg" alt="Logo" className="logo" /> */}
+          <Typography component="h1" variant="h5">
+            Sign in
           </Typography>
-        )}
-        {successMessage && (
-          <Typography variant="body2" color="success" sx={{ mt: 1 }}>
-            {successMessage}
-          </Typography>
-        )}
-      </Paper>
-    </Container>
+          <Box noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              value={formData.username}
+              onChange={handleInputChange}
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              value={formData.password}
+              onChange={handleInputChange}
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              onClick={handleSubmit}
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            {errors && (
+              <Typography variant="body2" color="error" sx={{ mt: 1 }}>
+                {errors}
+              </Typography>
+            )}
+            {successMessage && (
+              <Typography variant="body2" color="success" sx={{ mt: 1 }}>
+                {successMessage}
+              </Typography>
+            )}
+            <br />
+            <Grid container>
+              <Grid item >
+                <Link style={{ cursor: 'pointer' }} onClick={()=>{navigate('/signup')}} variant="body2">
+                  {"Don't have an account? Sign Up"} 
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 };
 

@@ -1,108 +1,293 @@
-import React, {lazy, Suspense} from 'react';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import "./header.css"
-
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import MenuIcon from "@mui/icons-material/Menu";
+import logoImg from "../../assets/images/logo.png";
+import { Container } from "@mui/system";
+import CustomButton from "../../assets/theme/components/CustomButton";
+import Logout from '@mui/icons-material/Logout';
+import {
+    Drawer,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    styled,
+    Menu,
+    MenuItem,
+    Avatar,
+    Tooltip,
+    IconButton,
+    Divider,
+} from "@mui/material";
+import { useState } from "react";
+import { LinkOffTwoTone } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-const HeaderContainer = styled.header`
-  background-color: #333333;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px;
-`;
+export const Navbar = (userRole) => {
 
-const Logo = styled.div`
-  font-family: 'DM Sans', sans-serif;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
+    const user = localStorage.getItem('userRole');
+    const navigate = useNavigate();
 
-const LogoText = styled.div`
-  font-family: system-ui;
-  font-weight: bold;
-  font-size: 20px;
-  color: white;
-`;
+    const [mobileMenu, setMobileMenu] = useState({
+        left: false,
+    });
 
-const LogoHighlight = styled.div`
-  font-family: system-ui;
-  font-weight: bold;
-  font-size: 20px;
-  color: #7848f4;
-`;
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-const Navigation = styled.nav`
-  ul {
-    list-style: none;
-    display: flex;
-  }
-  li {
-    margin-right: 20px;
-  }
-  a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-  }
-  a:hover {
-    color: #7848f4;
-  }
-`;
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
 
-const UserActions = styled.div`
-  a {
-    text-decoration: none;
-    background-color: #7848f4;
-    color: white;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-left: 10px;
-   
-  }
-`;
-const NavigationLinks = lazy(() => import('./NavigationLink'));
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
 
-const Header = ({ userRole }) => {
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (
+            event.type === "keydown" &&
+            (event.type === "Tab" || event.type === "Shift")
+        ) {
+            return;
+        }
 
-  const navigate = useNavigate();
-  
-  const handleLogout = () => {
-    // Clear the authentication information from local storage
-    localStorage.removeItem('token');
-    localStorage.removeItem('userRole');
+        setMobileMenu({ ...mobileMenu, [anchor]: open });
+    };
 
-    // Redirect to the logout or home page
-    navigate('/login'); // Replace with the desired path
-  };
+    const list = (anchor) => (
+        <Box
+            sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        >
+            {user === 'admin' ? (
+        <List>
+          {/* Admin links */}
+          {["Venue", "User Management", "Dashboard", "Organizer"].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton >
+                  <ListItemIcon>
+                    {index === 0 }
+                    {index === 1 }
+                    {index === 2 }
+                    {index === 3 }
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
+        </List>
+      ) : (
+        // User links
+        <List>
+          {["Home", "Events", "Contact", "About"].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton >
+                  <ListItemIcon>
+                    {index === 1 }
+                    {index === 2 }
+                    {index === 0 }
+                    {index === 3 }
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
+        </List>
+      )}
+        </Box>
+    );
 
-  return (
-    <HeaderContainer>
-      <Logo>
-        <LogoText>Shubh</LogoText>
-        <LogoHighlight>Prasang</LogoHighlight>
-      </Logo>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Navigation>
-          <NavigationLinks userRole={userRole} />
-        </Navigation>
-      </Suspense>
-      <UserActions className="headerBtn">
-        {userRole ? (
-          <NavLink to="/login" onClick={handleLogout}>
-            Logout
-          </NavLink>
-        ) : (
-          <>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/signup">Sign up</NavLink>
-          </>
-        )}
-      </UserActions>
-    </HeaderContainer>
-  );
+    const NavLink = styled(Typography)(({ theme }) => ({
+        fontSize: "16px",
+        color: "#333",
+        fontWeight: "bold",
+        cursor: "pointer",
+        "&:hover": {
+            color: "#fff",
+        },
+    }));
+
+    const NavbarLinksBox = styled(Box)(({ theme }) => ({
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: theme.spacing(3),
+        [theme.breakpoints.down("md")]: {
+            display: "none",
+        },
+    }));
+
+    const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
+        cursor: "pointer",
+        display: "none",
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.down("md")]: {
+            display: "block",
+        },
+    }));
+
+    const NavbarContainer = styled(Container)(({ theme }) => ({
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: theme.spacing(5),
+        [theme.breakpoints.down("md")]: {
+            padding: theme.spacing(2),
+        },
+    }));
+
+    const NavbarLogo = styled("img")(({ theme }) => ({
+        cursor: "pointer",
+        [theme.breakpoints.down("md")]: {
+            display: "none",
+        },
+    }));
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userRole');
+        handleCloseUserMenu();
+        navigate("/")
+    };
+
+    const handleDashboardClick = () => {
+        navigate("/Dashboard")
+    }
+
+    const handleVenueClick = () => {
+        navigate("/Venue")
+    }
+
+    const handleUserManagementClick = () => {
+        navigate("/Usermgmt")
+    }
+    const handleOrganizersClick = () => {
+        navigate("/Organizers")
+    }
+    const handleHomeClick = () => {
+        navigate("/")
+    }
+    const handleEventsClick = () => {
+        navigate("/events")
+    }
+    const handleContactClick = () => {
+        navigate("/contact")
+    }
+    const handleAboutClick = () => {
+        navigate("/about")
+    }
+
+    return (
+        <NavbarContainer>
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "2.5rem",
+                }}
+            >
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <CustomMenuIcon onClick={toggleDrawer("left", true)} />
+                    <Drawer
+                        anchor="left"
+                        open={mobileMenu["left"]}
+                        onClose={toggleDrawer("left", false)}
+                    >
+                        {list("left")}
+                    </Drawer>
+                    <NavbarLogo src={logoImg} alt="logo" style={{ maxWidth: "23%" }} />
+                </Box>
+
+                {user ? (
+                    <NavbarLinksBox>
+                        {user === 'admin' ? (
+                            // Admin links
+                            <>
+                                <NavLink variant="body2" onClick={handleDashboardClick}>Dashboard</NavLink>
+                                <NavLink variant="body2" onClick={handleUserManagementClick}>UserManagement</NavLink>
+                                <NavLink variant="body2" onClick={handleVenueClick}>Venue</NavLink>
+                                <NavLink variant="body2" onClick={handleOrganizersClick}>Organizers</NavLink>
+                            </>
+                        ) : (
+                            // User links
+                            <>
+                                <NavLink variant="body2" onClick={handleHomeClick}>Home</NavLink>
+                                <NavLink variant="body2" onClick={handleEventsClick}>Events</NavLink>
+                                <NavLink variant="body2" onClick={handleContactClick}>Contact</NavLink>
+                                <NavLink variant="body2" onClick={handleAboutClick}>About</NavLink>
+                            </>
+                        )}
+                    </NavbarLinksBox>
+                ) : (
+                    // Guest links
+                    <NavbarLinksBox>
+                        <NavLink variant="body2" onClick={handleHomeClick}>Home</NavLink>
+                        <NavLink variant="body2" onClick={handleEventsClick}>Events</NavLink>
+                        <NavLink variant="body2" onClick={handleContactClick}>Contact</NavLink>
+                        <NavLink variant="body2" onClick={handleAboutClick}>About</NavLink>
+                    </NavbarLinksBox>
+                )}
+            </Box>
+
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    ml: "1rem"
+                }}
+            >
+                {user ? (
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar src="../../../assets/images/user-avatar.png" />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: '45px'}}
+                            id="menu-appbar-user"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            <MenuItem onClick={logout}>
+                                <ListItemIcon>
+                                    <Logout fontSize="small" />
+                                </ListItemIcon>
+                                Logout
+                            </MenuItem>
+                        </Menu>
+                    </Box>
+                ) : (
+                    <CustomButton
+                        backgroundColor="#E61F22"
+                        color="#fff"
+                        buttonText="Login"
+                        variant="contained"
+                        href="/login"
+                    />
+                )}
+            </Box>
+        </NavbarContainer>
+    );
 };
 
-export default Header;
+export default Navbar;

@@ -39,9 +39,7 @@ function App() {
     <Router>
     
     <div className='App'>
-      
       <Header className="header" userRole={userRole}/>
-
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<Login/>} />
