@@ -24,6 +24,11 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: 'Username is already in use.' });
     }
 
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+      return res.status(400).json({ message: 'Email is already in use.' });
+    }
+
     // Create a new user
     const user = new User({
       username,

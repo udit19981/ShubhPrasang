@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import { TextField, Button, Container, Grid, MenuItem, Paper, Typography, CssBaseline, Avatar } from '@mui/material';
-import bcrypt from 'bcryptjs';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  Container,
+  Grid,
+  MenuItem,
+  Paper,
+  Typography,
+  CssBaseline,
+  Avatar,
+} from "@mui/material";
+import bcrypt from "bcryptjs";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    role: 'user',
-    secretKey: '',
-    phone: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    role: "user",
+    secretKey: "",
+    phone: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState('');
-  const [setIsRegistered] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,23 +42,27 @@ const Signup = () => {
     const newErrors = {};
 
     if (!/^[A-Za-z0-9]+$/.test(formData.username)) {
-      newErrors.username = 'Username should only contain letters and numbers.';
+      newErrors.username = "Username should only contain letters and numbers.";
     }
 
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.email)) {
-      newErrors.email = 'Invalid email address.';
+      newErrors.email = "Invalid email address.";
     }
 
-    if (formData.password.length < 8 || formData.password !== formData.confirmPassword) {
-      newErrors.password = 'Password must be at least 8 characters and match confirm password.';
+    if (
+      formData.password.length < 8 ||
+      formData.password !== formData.confirmPassword
+    ) {
+      newErrors.password =
+        "Password must be at least 8 characters and match confirm password.";
     }
 
-    if (formData.role === 'admin' && formData.secretKey !== 'shubh') {
-      newErrors.secretKey = 'Invalid secret key.';
+    if (formData.role === "admin" && formData.secretKey !== "shubh") {
+      newErrors.secretKey = "Invalid secret key.";
     }
 
     if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number should be a 10-digit number.';
+      newErrors.phone = "Phone number should be a 10-digit number.";
     }
 
     if (Object.keys(newErrors).length === 0) {
@@ -64,36 +78,36 @@ const Signup = () => {
       };
 
       try {
-        const response = await fetch('/api/signup', {
-          method: 'POST',
+        const response = await fetch("/api/signup", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(newUser),
         });
 
         if (response.status === 200) {
-          setSuccessMessage('Registered successfully!');
+          setSuccessMessage("Registered successfully!");
           setIsRegistered(true);
           setFormData({
-            username: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            role: 'user',
-            secretKey: '',
-            phone: '',
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            role: "user",
+            secretKey: "",
+            phone: "",
           });
           clearErrors(); // Clear errors when the form is reset
         } else if (response.status === 400) {
-          newErrors.server = 'User already exists!';
+          newErrors.server = "User already exists!";
           setErrors(newErrors);
         } else {
-          setSuccessMessage('Signup failed. Please try again.');
+          setSuccessMessage("Signup failed. Please try again.");
         }
       } catch (error) {
-        console.error('Error:', error);
-        setSuccessMessage('Signup failed. Please try again.');
+        console.error("Error:", error);
+        setSuccessMessage("Signup failed. Please try again.");
       }
     } else {
       setErrors(newErrors);
@@ -103,8 +117,15 @@ const Signup = () => {
   return (
     <Container component="main" sx={{ marginTop: 4 }} maxWidth="xs">
       <CssBaseline />
-      <Paper sx={{ padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+      <Paper
+        sx={{
+          padding: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h2" sx={{ marginBottom: 2 }} variant="h5">
@@ -165,7 +186,7 @@ const Signup = () => {
               </TextField>
             </Grid>
 
-            {formData.role === 'admin' && (
+            {formData.role === "admin" && (
               <Grid item xs={12}>
                 <TextField
                   name="secretKey"
