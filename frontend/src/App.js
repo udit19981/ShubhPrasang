@@ -42,9 +42,9 @@ function App() {
         <Route path="/about" element={<ShubhPrasangAboutUs/>} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/events" element={<EventPage/>} />
-        <Route path="events/wedding" element={<Wedding />} />
-        <Route path="events/birthday" element={<Birthday />} />
-        <Route path="events/corporate" element={<Corporate />} />
+        <Route path="/wedding" element={<Wedding />} />
+        <Route path="/birthday" element={<Birthday />} />
+        <Route path="/corporate" element={<Corporate />} />
         <Route path="/Venue" element={<Venue/>}/>
         <Route path='/Usermgmt' element={<Usermgmt/>}/>
         <Route path='/Dashboard' element={<Dashboard/>}/>

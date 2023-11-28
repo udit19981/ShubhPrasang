@@ -26,7 +26,7 @@ function EventPage() {
               <CardMedia component="img" className='imgEvent' alt="Wedding Event" height="140" image={eventImage2} />
               <CardContent>
                 <Button
-                  onClick={() => routeChange('./wedding')}
+                  onClick={() => routeChange('/wedding')}
                   variant="contained"
                   color="primary"
                   className="eventBtn"
@@ -42,7 +42,7 @@ function EventPage() {
               <CardMedia component="img" className='imgEvent' alt="Birthday Party" height="140" image={eventImage1} />
               <CardContent>
                 <Button
-                  onClick={() => routeChange('./birthday')}
+                  onClick={() => routeChange('/birthday')}
                   variant="contained"
                   color="primary"
                   className="eventBtn"
@@ -58,7 +58,7 @@ function EventPage() {
               <CardMedia component="img" className='imgEvent' alt="Corporate Event" height="140" image={eventImage3} />
               <CardContent>
                 <Button
-                  onClick={() => routeChange('./corporate')}
+                  onClick={() => routeChange('/corporate')}
                   variant="contained"
                   color="primary"
                   className="eventBtn"
