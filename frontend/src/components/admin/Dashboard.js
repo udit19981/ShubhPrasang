@@ -80,15 +80,15 @@ const Dashboard = () => {
  <div className="counts-container">
  <Link to="/Usermgmt" className="count-box users-box">
    <p>Total Users</p>
-   <p className="count-number">{userCount}</p>
+   <span className="count-number">{userCount}</span>
  </Link>
  <Link to="/Venue" className="count-box venues-box">
    <p>Total Venues</p>
-   <p className="count-number">{venueCount}</p>
+   <span className="count-number">{venueCount}</span>
  </Link>
  <Link to="/Organizers" className="count-box organizers-box">
    <p>Total Organizers</p>
-   <p className="count-number">{organizerCount}</p>
+   <span className="count-number">{organizerCount}</span>
  </Link>
 </div>
 

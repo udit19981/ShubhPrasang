@@ -207,7 +207,7 @@ export const Navbar = (userRole) => {
                     >
                         {list("left")}
                     </Drawer>
-                    <NavbarLogo src={logoImg} alt="logo" style={{ maxWidth: "23%" }} />
+                    <NavbarLogo src={logoImg} alt="shubhprasang-logo" style={{ maxWidth: "23%" }} />
                 </Box>
 
                 {user ? (

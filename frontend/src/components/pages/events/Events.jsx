@@ -6,6 +6,7 @@ import './events.css';
 import eventImage1 from '../../../assets/images/event1.png';
 import eventImage2 from '../../../assets/images/event2.png';
 import eventImage3 from '../../../assets/images/event3.png';
+import CustomButton from "../../../assets/theme/components/CustomButton";
 
 function EventPage() {
   const navigate = useNavigate();
@@ -16,56 +17,50 @@ function EventPage() {
 
   return (
     <div className="event-page-container">
-      <Typography variant="h4"mb={4} gutterBottom>
+      <Typography variant="h1" fontSize="3rem" mb={4} gutterBottom>
         Events
       </Typography>
       <main>
         <Grid container spacing={3} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
             <Card className="event-card">
-              <CardMedia component="img" className='imgEvent' alt="Wedding Event" height="140" image={eventImage2} />
+              <CardMedia component="img" className='imgEvent' alt="wedding-event" height="140" image={eventImage2} />
               <CardContent>
-                <Button
-                  onClick={() => routeChange('/wedding')}
-                  variant="contained"
-                  color="primary"
-                  className="eventBtn"
-                  style={{ backgroundColor: '#17a1c3' }}
-                >
-                  Wedding Event
-                </Button>
+                <CustomButton
+                        backgroundColor="#E61F22"
+                        color="#fff"
+                        buttonText="WEDDING EVENT"
+                        variant="contained"
+                        href='/wedding'
+                    />
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card className="event-card">
-              <CardMedia component="img" className='imgEvent' alt="Birthday Party" height="140" image={eventImage1} />
+              <CardMedia component="img" className='imgEvent' alt="birthday-party" height="140" image={eventImage1} />
               <CardContent>
-                <Button
-                  onClick={() => routeChange('/birthday')}
-                  variant="contained"
-                  color="primary"
-                  className="eventBtn"
-                  style={{ backgroundColor: '#17a1c3' }}
-                >
-                  Birthday Party
-                </Button>
+              <CustomButton
+                        backgroundColor="#E61F22"
+                        color="#fff"
+                        buttonText="BIRTHDAY EVENT"
+                        variant="contained"
+                        href='/birthday'
+                    />
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card className="event-card">
-              <CardMedia component="img" className='imgEvent' alt="Corporate Event" height="140" image={eventImage3} />
+              <CardMedia component="img" className='imgEvent' alt="corporate-event" height="140" image={eventImage3} />
               <CardContent>
-                <Button
-                  onClick={() => routeChange('/corporate')}
-                  variant="contained"
-                  color="primary"
-                  className="eventBtn"
-                  style={{ backgroundColor: '#17a1c3' }}
-                >
-                  Corporate Event
-                </Button>
+              <CustomButton
+                        backgroundColor="#E61F22"
+                        color="#fff"
+                        buttonText="CORPORATE EVENT"
+                        variant="contained"
+                        href='/corporate'
+                    />
               </CardContent>
             </Card>
           </Grid>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "./footer.css"
 
 const MainContent = styled.div`
   min-height: calc(100vh - /* height of footer */);
@@ -50,16 +51,16 @@ const Footer = () => {
           <FooterText>&copy; 2023 ShubhPrasang</FooterText>
 
           <SocialMediaLinks>
-            <a href="https://www.facebook.com">
+            <a href="https://www.facebook.com" aria-label="Visit our Facebook page" >
               <i className="fab fa-facebook"></i>
             </a>
-            <a href="https://www.twitter.com">
+            <a href="https://www.twitter.com" aria-label="Visit our twitter page">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="https://www.linkedin.com">
+            <a href="https://www.linkedin.com" aria-label="Visit our linkedin page">
               <i className="fab fa-linkedin"></i>
             </a>
-            <a href="https://www.instagram.com">
+            <a href="https://www.instagram.com" aria-label="Visit our instagram page">
               <i className="fab fa-instagram"></i>
             </a>
           </SocialMediaLinks>

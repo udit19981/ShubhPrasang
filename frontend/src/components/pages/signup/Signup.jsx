@@ -128,8 +128,13 @@ const Signup = () => {
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h2" sx={{ marginBottom: 2 }} variant="h5">
-          Signup
+        <Typography
+          textAlign="center"
+          variant="h1"
+          fontSize="2rem"
+          gutterBottom
+        >
+          Sign up
         </Typography>
         <form noValidate>
           <Grid container spacing={2}>
@@ -175,8 +180,8 @@ const Signup = () => {
             <Grid item xs={12}>
               <TextField
                 name="role"
-                select
                 label="Role"
+                select
                 value={formData.role}
                 onChange={handleInputChange}
                 fullWidth

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Typography} from '@mui/material';
 import { Link} from "react-router-dom";
 import axios from 'axios';
 import './venueList.css'
@@ -24,12 +25,16 @@ const VenueList = () => {
 
 
   return (
+    <div>
+    <Typography variant="h1" fontSize="3rem" mb={4} gutterBottom>
+        Venues
+    </Typography>
     <div  className="fp">
       {venues.length > 0 ? (
         <>
             {venues.map((venue) => (
               <div className="fpItem" key={venue._id}>
-                <Link to={`/fhalls/${venue._id}`}><img src={venue.imageUrl} alt="Venue" className="fpImg" /></Link>
+                <Link to={`/fhalls/${venue._id}`}><img src={venue.imageUrl} alt={venue.venueName+"hall"} className="fpImg" /></Link>
                 <span className="fpName">{venue.venueName}</span>
                 <span className="fpCity"><LocationOnIcon/> {venue.address}</span>
                 <span className="fpName">Event: {venue.occasionType}</span>
@@ -41,6 +46,7 @@ const VenueList = () => {
       ) : (
         <p>No venues available.</p>
       )}
+    </div>
     </div>
   );
 };

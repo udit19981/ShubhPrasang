@@ -36,11 +36,11 @@
   flex-direction: column;
   justify-content: space-between;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
 }
 
 .users-box {
-  background-color: #3498db;
+  background-color: #83C5F1;
 }
 
 .venues-box {
@@ -48,7 +48,7 @@
 }
 
 .organizers-box {
-  background-color: #e74c3c;
+  background-color: #e67e22;
 }
 
 .count-number {
@@ -61,6 +61,17 @@
   justify-content: space-around;
   margin-top: 30px;
 }
+
+.counts-container p{
+  color: #000000;
+  font-weight: 500;
+}
+
+.counts-container span{
+  color: #000000;
+  font-weight: 500;
+}
+
 
 .widget {
   width: 400px;
@@ -93,7 +104,7 @@
 
 .widget li strong {
   font-size: 18px;
-  color: #3498db;
+  color: #000000;
 }
 
 .widget h2 {

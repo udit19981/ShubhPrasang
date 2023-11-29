@@ -25,15 +25,26 @@ body {
 header {
   text-align: center;
   padding: 20px 0;
-  background-color: #3498db;
-  color: #fff;
+  background-color: #83C5F1;
+  color: #000;
+}
+
+header h1{
+  color: #000;
 }
 
 nav {
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.textField {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -57,8 +68,8 @@ td {
 }
 
 th {
-  background-color: #3498db;
-  color: #fff;
+  background-color: #83C5F1;
+  color: #000;
 }
 
 tbody tr:nth-child(even) {
@@ -83,8 +94,8 @@ li {
 button {
   padding: 8px 12px;
   font-size: 14px;
-  background-color: #3498db;
-  color: #fff;
+  background-color: #83C5F1;
+  color: #000;
   border: none;
   cursor: pointer;
 }

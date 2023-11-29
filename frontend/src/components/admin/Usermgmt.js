@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Usermgmt.css';
+import { TextField } from '@mui/material';
 
 const Usermgmt = () => {
   const [users, setUsers] = useState([]);
@@ -45,9 +46,10 @@ const Usermgmt = () => {
         <h1>User Management</h1>
       </header>
       <nav>
-        <input
+        <TextField className='textField'
+          label="Search by Names"
           type="text"
-          placeholder="Search by name"
+          placeholder="Search by Name"
           value={searchTerm}
           onChange={handleSearch}
         />

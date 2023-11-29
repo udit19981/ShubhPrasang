@@ -33,7 +33,6 @@ function HomePage() {
       <EventPage/>
     </div>
     <div className='venue'>
-      <h1>Venues</h1>
       <VenueList />
     </div>
     
