@@ -1,74 +1,34 @@
-import React, { useEffect, useState } from 'react';
-// import ReactDOM from 'react-dom';
+import React, { useEffect } from 'react';
 
-function PayPalButton({ price, productName }) {
-  const [setOrderId] = useState(null);
-
+const CheckoutPage = () => {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `https://www.paypal.com/sdk/js?client-id=AX-AZocSucOyPogzOWrxJaMCCyN4uOmYAtfDz4azakbd84vLBAItPWdZgs47RJ9WjQPOZgny3iQ5Pi7y`;
-    script.async = true;
-    script.onload = () => {
-      window.paypal
-        .Buttons({
-          createOrder: async function () {
-            const res = await fetch('/pay', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                price: price,
-                productName: productName,
-              }),
-            });
-            const data = await res.json();
-            setOrderId(data.orderId);
-            return data.orderId;
-          },
-          onApprove: function (actions) {
-            return actions.order.capture().then(function (details) {
-              alert('Transaction completed by ' + details.payer.name.given_name);
-              // Add additional logic here, such as updating the database, etc.
-            });
-          },
-        })
-        .render('#paypal-button-container');
+    // Load Stripe.js asynchronously
+    const stripeScript = document.createElement('script');
+    stripeScript.src = 'https://js.stripe.com/v3/buy-button.js';
+    stripeScript.async = true;
+    document.head.appendChild(stripeScript);
+
+    // Ensure Stripe.js has loaded before attempting to render the Buy Button
+    stripeScript.onload = () => {
+      const stripeBuyButton = document.createElement('stripe-buy-button');
+      stripeBuyButton.setAttribute('buy-button-id', 'buy_btn_1OJhrBIdttkfAI5uGPbl1Q1w');
+      stripeBuyButton.setAttribute('publishable-key', 'pk_test_51OHa5cIdttkfAI5uyzzONgOHWbzHzHfVgkHC0X7tFqQO3D0jUE2gRpBNjPzwRGVL8zkqYCx8wWCnAUtdoFjqdv4K0051bxpOIV');
+
+      // Append the Stripe Buy Button element to the component
+      document.getElementById('checkout-container').appendChild(stripeBuyButton);
     };
-    document.body.appendChild(script);
-  });
 
-  return <div id="paypal-button-container"></div>;
-}
-
-function Checkout() {
-  const [price, setPrice] = useState('10');
-  const [productName, setProductName] = useState('Sample Product');
+    return () => {
+      // Clean up the script element when the component is unmounted
+      document.head.removeChild(stripeScript);
+    };
+  }, []);
 
   return (
-    <div>
-      <h1>Checkout</h1>
-      <div className='labelCheckout'>
-      <div>
-        <label htmlFor="productName">Product Name:</label>
-        <input
-          type="text"
-          id="productName"
-          value={productName}
-          onChange={(e) => setProductName(e.target.value)}
-        />
-        <label htmlFor="price">Price:</label>
-        <input
-          type="text"
-          id="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-      </div>
-      <PayPalButton price={price} productName={productName} />
-      </div>
+    <div id="checkout-container">
+      {/* Placeholder for the Stripe Buy Button */}
     </div>
   );
-}
+};
 
-export default Checkout;
+export default CheckoutPage;
