@@ -3,6 +3,7 @@ import React from "react";
 import "./about.css"; // Import your CSS file
 import nikunjImage from "../../../assets/images/nikunj1.png";
 import uditImage from "../../../assets/images/Udit.png";
+import akashImage from "../../../assets/images/Akaash.jpg";
 import deepImage from "../../../assets/images/deep.jpeg";
 import teammember from "../../../assets/images/teammember.png";
 import { Typography} from '@mui/material';
@@ -62,7 +63,7 @@ function ShubhPrasangAboutUs() {
           </div>
           <hr style={customStyles} />
           <div className="team-member">
-            <img src={teammember} alt="Team Member 4" />
+            <img src={akashImage} alt="Team Member 4" />
             <h3>Akash Singh</h3>
             <p>Full Stack developer</p>
           </div>
