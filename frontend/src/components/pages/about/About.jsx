@@ -5,7 +5,7 @@ import nikunjImage from "../../../assets/images/nikunj1.png";
 import uditImage from "../../../assets/images/Udit.png";
 import akashImage from "../../../assets/images/Akaash.jpg";
 import deepImage from "../../../assets/images/deep.jpeg";
-import teammember from "../../../assets/images/teammember.png";
+// import teammember from "../../../assets/images/teammember.png";
 import { Typography} from '@mui/material';
 
 function ShubhPrasangAboutUs() {
