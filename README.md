@@ -1,4 +1,5 @@
 # ShubhPrasang - Event Management Portal
+![Alt text](logo.png)
 
 ## Team Members
 - Nikunj Patel
