@@ -1,66 +1,97 @@
-# Getting Started with Create React App
+# ShubhPrasang - Event Management Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Team Members
+- Nikunj Patel
+- Udit Avaiya
+- Deep Patel
+- Akash Singh
 
-## Available Scripts
+## Date
+12 December 2023
 
-In the project directory, you can run:
+## Project Description
+"ShubhPrasang" is an event management portal developed with the MERN stack and integrated Stripe payment gateway. It simplifies event planning by allowing users to explore, book venues, and manage events seamlessly.
 
-### `npm start`
+## Technology Used
+### Front-end:
+- React, HTML, CSS, JavaScript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Back-end:
+- Node.js, Express.js, MongoDB, Mongoose, Stripe
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Version Control:
+- GitHub
 
-#To push your React project files to a GitHub repository using the command line, you can follow these steps:
+## Client Side Features
+- User registration and login with JWT tokens
+- Event creation and management
+- Venue exploration with details
+- Secure booking and checkout using Stripe
+- Profile management and email verification
+- Personalized dashboard and push notifications
 
-1. Initialize Git (if not already done):
-   If your project is not already a Git repository, you can initialize one in your project directory:
+## Admin Side Features
+- Admin login and dashboard overview
+- CRUD operations for venue and user management
+- Organizer oversight and feedback management
+- Contact Us and About Us pages
 
-   ```bash
-   git init
-   ```
+## Difficulties Faced and Solutions
+- Addressed dependency issues and ensured compatibility.
+- Integrated Stripe after adjusting node and react versions.
+- Solved merging problems in the GitHub repository by pulling code before committing.
 
-2. Add your files to the Git repository:
-   Use the following command to add all the files and changes to the staging area:
+## Future Implementations
+- Showcase venue categories during registration.
+- Implement a section for highlighting new venues.
+- Enable push notifications for order updates.
+- Integrate a coupon system for discounts during checkout.
 
-   ```bash
-   git add .
-   ```
+## GitHub
+- GitHub Link: [https://github.com/udit19981/ShubhPrasang](https://github.com/udit19981/ShubhPrasang)
 
-   Alternatively, you can specify individual files or directories instead of using the `.` to add everything.
+## Screenshots
+1) Login
+![Alt text](image-1.png)
 
-3. Commit your changes:
-   Commit your staged changes with a descriptive message:
+2) Signup
+![Alt text](image-2.png)
 
-   ```bash
-   git commit -m "Initial commit"  # Replace "Initial commit" with your own message
-   ```
+3) Home
+![Alt text](image-3.png)
 
-4. Create a GitHub repository:
-   If you haven't already, create a new repository on GitHub. Follow the instructions on GitHub to create a new repository.
+4) Events
+![Alt text](image-4.png)
+![Alt text](image-5.png)
 
-5. Link your local repository to the GitHub repository:
-   Replace `<username>` and `<repository>` with your GitHub username and repository name:
+5) Venue
+![Alt text](image-6.png)
 
-   ```bash
-   git remote add origin https://github.com/<username>/<repository>.git
-   ```
+6) Contact
+![Alt text](image-7.png)
 
-6. Push your code to GitHub:
-   Use the following command to push your code to the GitHub repository:
+7) About
+![Alt text](image-8.png)
 
-   ```bash
-   git push -u origin master
-   ```
+8) Checkout
+![Alt text](image-9.png)
 
-   If you're using a different branch instead of `master`, replace it with your branch name.
+9) Checkout 2 (Stripe payment)
+![Alt text](image-10.png)
+![Alt text](image-11.png)
 
-7. Enter your GitHub credentials:
-   Git will prompt you to enter your GitHub username and password (or a personal access token if you have 2-factor authentication enabled). Once authenticated, the code will be pushed to your GitHub repository.
+10) Admin Dashboard
+![Alt text](image-12.png)
 
-After completing these steps, your React project files should be pushed to your GitHub repository, and they will be visible on your GitHub account.
+11) Venue Management
+![Alt text](image-13.png)
 
-Remember to replace `<username>` and `<repository>` with your actual GitHub username and repository name in the commands above.
+12) User Management
+![Alt text](image-14.png)
+
+13) Organizer Management
+![Alt text](image-15.png)
+
+## Accessibility Features
+- Tested with the Wave extension to ensure accessibility compliance.
+![Alt text](image.png)
